@@ -28,11 +28,21 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button variant="hero" size="lg" className="text-lg px-8 py-6">
-                Start Free Trial
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="text-lg px-8 py-6"
+                onClick={() => window.location.href = '/contact'}
+              >
+                Book Free Demo
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-                Watch Demo
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-lg px-8 py-6"
+                onClick={() => window.location.href = '/pricing'}
+              >
+                View Pricing
               </Button>
             </div>
             

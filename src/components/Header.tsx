@@ -1,6 +1,16 @@
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-6 py-4">
@@ -18,13 +28,28 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#overview" className="text-foreground hover:text-primary transition-colors">Overview</a>
             <a href="#modules" className="text-foreground hover:text-primary transition-colors">Modules</a>
-            <a href="#solutions" className="text-foreground hover:text-primary transition-colors">Solutions</a>
-            <a href="#contact" className="text-foreground hover:text-primary transition-colors">Contact</a>
+            <a href="/pricing" className="text-foreground hover:text-primary transition-colors">Pricing</a>
+            <a href="/contact" className="text-foreground hover:text-primary transition-colors">Contact</a>
           </nav>
           
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm">Demo</Button>
-            <Button variant="hero" size="sm">Get Started</Button>
+            {user ? (
+              <>
+                <span className="text-sm text-muted-foreground">Welcome back!</span>
+                <Button variant="outline" size="sm" onClick={handleSignOut}>
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="outline" size="sm" onClick={() => navigate('/contact')}>
+                  Book Demo
+                </Button>
+                <Button variant="hero" size="sm" onClick={() => navigate('/auth')}>
+                  Sign In
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>
