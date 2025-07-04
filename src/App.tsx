@@ -8,6 +8,10 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Contact from "./pages/Contact";
 import Pricing from "./pages/Pricing";
+import Dashboard from "./pages/Dashboard";
+import AIGrading from "./pages/AIGrading";
+import SmartContainer from "./pages/SmartContainer";
+import ColdStorage from "./pages/ColdStorage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +28,10 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/ai-grading" element={<AIGrading />} />
+            <Route path="/smart-container" element={<SmartContainer />} />
+            <Route path="/cold-storage" element={<ColdStorage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
