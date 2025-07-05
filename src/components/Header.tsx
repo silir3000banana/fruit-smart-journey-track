@@ -15,7 +15,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
             <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-sm">S</span>
             </div>
@@ -37,7 +37,12 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             {user ? (
               <>
-                <span className="text-sm text-muted-foreground">Welcome back!</span>
+                <Button variant="ghost" size="sm" onClick={() => navigate('/dashboard')}>
+                  🏠 Dashboard
+                </Button>
+                <Button variant="ghost" size="sm" onClick={() => navigate('/profile')}>
+                  👤 Profile
+                </Button>
                 <Button variant="outline" size="sm" onClick={handleSignOut}>
                   Sign Out
                 </Button>

@@ -11,6 +11,12 @@ const FarmerDashboard = () => {
     { label: "Revenue", value: "₹1,25,000", change: "+12% this month", color: "text-success" }
   ];
 
+  const harvestData = [
+    { date: "2024-07-03", variety: "Cavendish", quantity: "500 kg", quality: "Grade A", temperature: "13°C" },
+    { date: "2024-07-02", variety: "Robusta", quantity: "350 kg", quality: "Grade A+", temperature: "12°C" },
+    { date: "2024-07-01", variety: "Red Banana", quantity: "200 kg", quality: "Grade A", temperature: "13°C" }
+  ];
+
   const recentLots = [
     { id: "BN-001", variety: "Cavendish", quantity: "200 kg", status: "In Cold Storage", qr: "Generated" },
     { id: "BN-002", variety: "Robusta", quantity: "150 kg", status: "In Transit", qr: "Generated" },
@@ -48,7 +54,7 @@ const FarmerDashboard = () => {
             <CardDescription>Common tasks for harvest management</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <Button className="h-20 flex flex-col gap-2">
                 <span className="text-lg">🌾</span>
                 <span>New Harvest Entry</span>
@@ -58,9 +64,53 @@ const FarmerDashboard = () => {
                 <span>Scan QR Code</span>
               </Button>
               <Button variant="outline" className="h-20 flex flex-col gap-2">
+                <span className="text-lg">🏠</span>
+                <span>Cold Storage</span>
+              </Button>
+              <Button variant="outline" className="h-20 flex flex-col gap-2">
                 <span className="text-lg">📊</span>
                 <span>View Reports</span>
               </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Recent Harvest Data */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Recent Harvest Data</CardTitle>
+            <CardDescription>Latest harvest entries with temperature monitoring</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b">
+                    <th className="text-left p-2">Date</th>
+                    <th className="text-left p-2">Variety</th>
+                    <th className="text-left p-2">Quantity</th>
+                    <th className="text-left p-2">Quality</th>
+                    <th className="text-left p-2">Temperature</th>
+                    <th className="text-left p-2">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {harvestData.map((harvest, index) => (
+                    <tr key={index} className="border-b">
+                      <td className="p-2">{harvest.date}</td>
+                      <td className="p-2 font-medium">{harvest.variety}</td>
+                      <td className="p-2">{harvest.quantity}</td>
+                      <td className="p-2">
+                        <Badge variant="premium">{harvest.quality}</Badge>
+                      </td>
+                      <td className="p-2">{harvest.temperature}</td>
+                      <td className="p-2">
+                        <Button variant="ghost" size="sm">Edit</Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </CardContent>
         </Card>

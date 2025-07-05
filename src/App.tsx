@@ -9,6 +9,8 @@ import Auth from "./pages/Auth";
 import Contact from "./pages/Contact";
 import Pricing from "./pages/Pricing";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import HarvestModule from "./components/dashboards/HarvestModule";
 import AIGrading from "./pages/AIGrading";
 import SmartContainer from "./pages/SmartContainer";
 import ColdStorage from "./pages/ColdStorage";
@@ -29,6 +31,8 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/harvest" element={<HarvestModule />} />
             <Route path="/ai-grading" element={<AIGrading />} />
             <Route path="/smart-container" element={<SmartContainer />} />
             <Route path="/cold-storage" element={<ColdStorage />} />

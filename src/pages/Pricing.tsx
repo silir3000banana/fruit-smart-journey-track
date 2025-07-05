@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Check, Star, Zap, Shield } from 'lucide-react';
+import { useState } from 'react';
 
 const Pricing = () => {
+  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('yearly');
+  
   const plans = [
     {
       name: "Smart Modules",
@@ -94,6 +98,17 @@ const Pricing = () => {
               Flexible solutions designed for Indian farmers, cooperatives, and exporters. 
               All prices include GST and are designed to deliver ROI within 12-18 months.
             </p>
+            
+            {/* Billing Toggle */}
+            <div className="flex justify-center mb-8">
+              <Tabs value={billingPeriod} onValueChange={(value) => setBillingPeriod(value as 'monthly' | 'yearly')}>
+                <TabsList className="grid w-full grid-cols-2 w-64">
+                  <TabsTrigger value="monthly">Monthly</TabsTrigger>
+                  <TabsTrigger value="yearly">Yearly (Save 20%)</TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
+            
             <div className="flex justify-center gap-4 flex-wrap">
               <Badge variant="secondary" className="px-4 py-2">
                 🇮🇳 Made in India
@@ -263,7 +278,7 @@ const Pricing = () => {
           </Card>
 
           {/* CTA Section */}
-          <div className="text-center mt-16">
+          <div className="text-center mt-16 mb-16">
             <h2 className="text-3xl font-bold text-foreground mb-4">
               Ready to Transform Your Value Chain?
             </h2>
@@ -280,6 +295,53 @@ const Pricing = () => {
               </Button>
             </div>
           </div>
+
+          {/* FAQ Section */}
+          <Card className="bg-card border-border shadow-elegant">
+            <CardContent className="p-8">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-foreground mb-4">
+                  Frequently Asked Questions
+                </h2>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">What's included in setup?</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Complete hardware installation, software configuration, user training, and 30-day support.
+                  </p>
+                  
+                  <h3 className="font-semibold text-foreground mb-2">Do you support offline mode?</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Yes, our farmer apps work offline and sync when connectivity is restored.
+                  </p>
+                  
+                  <h3 className="font-semibold text-foreground mb-2">What about data security?</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Bank-grade encryption, local data storage options, and GDPR compliance.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Can I integrate with my ERP?</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Yes, we provide API integration with popular ERP systems and custom solutions.
+                  </p>
+                  
+                  <h3 className="font-semibold text-foreground mb-2">What's the ROI timeline?</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Most customers see positive ROI within 12-18 months through reduced waste and premium pricing.
+                  </p>
+                  
+                  <h3 className="font-semibold text-foreground mb-2">Do you offer customization?</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Yes, we customize modules based on your specific crops, processes, and compliance needs.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

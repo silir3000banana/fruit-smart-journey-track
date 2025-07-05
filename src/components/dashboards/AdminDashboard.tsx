@@ -113,10 +113,14 @@ const AdminDashboard = () => {
             <CardDescription>Administrative tools and system controls</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               <Button className="h-20 flex flex-col gap-2">
                 <span className="text-lg">👥</span>
                 <span>Manage Users</span>
+              </Button>
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => window.location.href = '/harvest'}>
+                <span className="text-lg">🌾</span>
+                <span>Harvest Module</span>
               </Button>
               <Button variant="outline" className="h-20 flex flex-col gap-2">
                 <span className="text-lg">📊</span>
