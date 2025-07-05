@@ -21,6 +21,7 @@ const Pricing = () => {
       ],
       popular: false,
       cta: "Get Module Quote",
+      ctaAction: () => window.location.href = '/contact',
       icon: <Zap className="h-6 w-6" />
     },
     {
@@ -42,6 +43,7 @@ const Pricing = () => {
       ],
       popular: true,
       cta: "Book Demo",
+      ctaAction: () => window.location.href = '/contact',
       icon: <Star className="h-6 w-6" />
     },
     {
@@ -63,6 +65,7 @@ const Pricing = () => {
       ],
       popular: false,
       cta: "Discuss Partnership",
+      ctaAction: () => window.location.href = '/contact',
       icon: <Shield className="h-6 w-6" />
     }
   ];
@@ -152,6 +155,7 @@ const Pricing = () => {
                     className="w-full" 
                     variant={plan.popular ? "hero" : "outline"}
                     size="lg"
+                    onClick={plan.ctaAction}
                   >
                     {plan.cta}
                   </Button>
@@ -248,7 +252,7 @@ const Pricing = () => {
               </div>
               
               <div className="text-center mt-8">
-                <Button variant="hero" size="lg" className="px-8">
+                <Button variant="hero" size="lg" className="px-8" onClick={() => window.location.href = '/contact'}>
                   Discuss Financing Options
                 </Button>
                 <p className="text-sm text-muted-foreground mt-3">
@@ -268,10 +272,10 @@ const Pricing = () => {
               can increase your profits and reduce waste.
             </p>
             <div className="flex justify-center gap-4 flex-wrap">
-              <Button variant="hero" size="lg" className="px-8">
+              <Button variant="hero" size="lg" className="px-8" onClick={() => window.location.href = '/contact'}>
                 Schedule Free Demo
               </Button>
-              <Button variant="outline" size="lg" className="px-8">
+              <Button variant="outline" size="lg" className="px-8" onClick={() => window.location.href = '/contact'}>
                 Download Brochure
               </Button>
             </div>
