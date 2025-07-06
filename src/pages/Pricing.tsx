@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Check, Star, Zap, Shield } from 'lucide-react';
 import { useState } from 'react';
+import Header from "@/components/Header";
 
 const Pricing = () => {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('yearly');
@@ -83,8 +84,9 @@ const Pricing = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background pt-20">
-      <div className="container mx-auto px-6 py-12">
+    <div className="min-h-screen bg-background">
+      <Header />
+      <div className="container mx-auto px-6 py-12 pt-24">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">

@@ -82,10 +82,19 @@ const AIGrading = () => {
                 to ensure consistent quality standards for export markets.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-6">
+                <Button 
+                  size="lg" 
+                  className="text-lg px-8 py-6"
+                  onClick={() => window.location.href = '/contact'}
+                >
                   Request Demo
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="text-lg px-8 py-6"
+                  onClick={() => window.location.href = '/contact'}
+                >
                   Download Specs
                 </Button>
               </div>
@@ -220,10 +229,19 @@ const AIGrading = () => {
             Contact our team to discuss implementation, pricing, and customization options for your facility.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6">
+            <Button 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => window.location.href = '/contact'}
+            >
               Schedule Consultation
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => window.location.href = '/contact'}
+            >
               Request Quote
             </Button>
           </div>

@@ -71,10 +71,19 @@ const ColdStorage = () => {
                 and real-time monitoring for optimal fruit preservation and reduced wastage.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-6">
+                <Button 
+                  size="lg" 
+                  className="text-lg px-8 py-6"
+                  onClick={() => window.location.href = '/contact'}
+                >
                   Schedule Assessment
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="text-lg px-8 py-6"
+                  onClick={() => window.location.href = '/contact'}
+                >
                   View Case Studies
                 </Button>
               </div>
@@ -258,10 +267,19 @@ const ColdStorage = () => {
             Our experts will help you maximize efficiency and minimize costs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6">
+            <Button 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => window.location.href = '/contact'}
+            >
               Book Facility Assessment
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => window.location.href = '/contact'}
+            >
               Download ROI Calculator
             </Button>
           </div>

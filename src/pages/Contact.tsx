@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,10 +9,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import Header from "@/components/Header";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +35,7 @@ const Contact = () => {
       .insert([data]);
 
     if (error) {
+      console.error('Contact form error:', error);
       toast({
         title: "Error",
         description: "Failed to submit inquiry. Please try again.",
@@ -43,14 +47,20 @@ const Contact = () => {
         description: "Thank you for your interest. Our team will contact you within 24 hours.",
       });
       (e.target as HTMLFormElement).reset();
+      
+      // Redirect to thank you page or show success state
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
     }
 
     setLoading(false);
   };
 
   return (
-    <div className="min-h-screen bg-background pt-20">
-      <div className="container mx-auto px-6 py-12">
+    <div className="min-h-screen bg-background">
+      <Header />
+      <div className="container mx-auto px-6 py-12 pt-24">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">

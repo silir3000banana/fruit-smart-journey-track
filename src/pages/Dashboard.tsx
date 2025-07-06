@@ -5,6 +5,8 @@ import ColdStorageDashboard from "@/components/dashboards/ColdStorageDashboard";
 import RipeningDashboard from "@/components/dashboards/RipeningDashboard";
 import RetailerDashboard from "@/components/dashboards/RetailerDashboard";
 import AdminDashboard from "@/components/dashboards/AdminDashboard";
+import ComprehensiveFarmerDashboard from "@/components/dashboards/ComprehensiveFarmerDashboard";
+import EnhancedRetailerDashboard from "@/components/dashboards/EnhancedRetailerDashboard";
 import { Navigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -36,7 +38,7 @@ const Dashboard = () => {
   const renderDashboard = () => {
     switch (profile.role) {
       case 'farmer':
-        return <FarmerDashboard />;
+        return <ComprehensiveFarmerDashboard />;
       case 'supervisor':
         return <SupervisorDashboard />;
       case 'cold_storage_operator':
@@ -44,7 +46,7 @@ const Dashboard = () => {
       case 'ripening_operator':
         return <RipeningDashboard />;
       case 'retailer':
-        return <RetailerDashboard />;
+        return <EnhancedRetailerDashboard />;
       case 'admin':
         return <AdminDashboard />;
       default:
