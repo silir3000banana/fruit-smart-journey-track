@@ -4,8 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
+import { useNavigate } from "react-router-dom";
 
 const ComprehensiveFarmerDashboard = () => {
+  const navigate = useNavigate();
   const currentHarvest = {
     totalHarvested: "24.5 MT",
     targetHarvest: "30 MT",
@@ -289,21 +291,21 @@ const ComprehensiveFarmerDashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-3">
-                    <Button className="h-16 flex flex-col gap-1" onClick={() => window.location.href = '/harvest'}>
+                    <Button className="h-16 flex flex-col gap-1" onClick={() => navigate('/farm-tracking')}>
                       <span className="text-lg">🌾</span>
-                      <span className="text-sm">New Harvest</span>
+                      <span className="text-sm">Farm Tracking</span>
                     </Button>
-                    <Button variant="outline" className="h-16 flex flex-col gap-1">
-                      <span className="text-lg">📊</span>
-                      <span className="text-sm">View Reports</span>
+                    <Button variant="outline" className="h-16 flex flex-col gap-1" onClick={() => navigate('/ai-assessment')}>
+                      <span className="text-lg">🤖</span>
+                      <span className="text-sm">AI Quality</span>
                     </Button>
-                    <Button variant="outline" className="h-16 flex flex-col gap-1">
-                      <span className="text-lg">🌡️</span>
-                      <span className="text-sm">Check Storage</span>
+                    <Button variant="outline" className="h-16 flex flex-col gap-1" onClick={() => navigate('/location-scanning')}>
+                      <span className="text-lg">📍</span>
+                      <span className="text-sm">Location Scan</span>
                     </Button>
-                    <Button variant="outline" className="h-16 flex flex-col gap-1">
-                      <span className="text-lg">📱</span>
-                      <span className="text-sm">Mobile App</span>
+                    <Button variant="outline" className="h-16 flex flex-col gap-1" onClick={() => navigate('/waterproof-tagging')}>
+                      <span className="text-lg">🏷️</span>
+                      <span className="text-sm">Tagging</span>
                     </Button>
                   </div>
                 </CardContent>

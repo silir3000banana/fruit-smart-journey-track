@@ -20,6 +20,7 @@ import AIQualityAssessment from "./pages/AIQualityAssessment";
 import WaterproofTagging from "./pages/WaterproofTagging";
 import PackingLogistics from "./pages/PackingLogistics";
 import ComplianceCertification from "./pages/ComplianceCertification";
+import ConsumerPortal from "./pages/ConsumerPortal";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/waterproof-tagging" element={<WaterproofTagging />} />
             <Route path="/packing-logistics" element={<PackingLogistics />} />
             <Route path="/compliance-certification" element={<ComplianceCertification />} />
+            <Route path="/consumer-portal" element={<ConsumerPortal />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
