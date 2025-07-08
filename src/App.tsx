@@ -14,6 +14,12 @@ import HarvestModule from "./components/dashboards/HarvestModule";
 import AIGrading from "./pages/AIGrading";
 import SmartContainer from "./pages/SmartContainer";
 import ColdStorage from "./pages/ColdStorage";
+import FarmLevelTracking from "./pages/FarmLevelTracking";
+import LocationScanning from "./pages/LocationScanning";
+import AIQualityAssessment from "./pages/AIQualityAssessment";
+import WaterproofTagging from "./pages/WaterproofTagging";
+import PackingLogistics from "./pages/PackingLogistics";
+import ComplianceCertification from "./pages/ComplianceCertification";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +42,12 @@ const App = () => (
             <Route path="/ai-grading" element={<AIGrading />} />
             <Route path="/smart-container" element={<SmartContainer />} />
             <Route path="/cold-storage" element={<ColdStorage />} />
+            <Route path="/farm-tracking" element={<FarmLevelTracking />} />
+            <Route path="/location-scanning" element={<LocationScanning />} />
+            <Route path="/ai-assessment" element={<AIQualityAssessment />} />
+            <Route path="/waterproof-tagging" element={<WaterproofTagging />} />
+            <Route path="/packing-logistics" element={<PackingLogistics />} />
+            <Route path="/compliance-certification" element={<ComplianceCertification />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
