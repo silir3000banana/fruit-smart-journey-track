@@ -14,7 +14,11 @@ import HarvestModule from "./components/dashboards/HarvestModule";
 import AIGrading from "./pages/AIGrading";
 import SmartContainer from "./pages/SmartContainer";
 import ColdStorage from "./pages/ColdStorage";
-import FarmLevelTracking from "./pages/FarmLevelTracking";
+import FarmLevelTracking from "./pages/FarmLevelTracking/index";
+import HarvestEntry from "./pages/FarmLevelTracking/HarvestEntry";
+import LotManagement from "./pages/FarmLevelTracking/LotManagement";
+import QRGeneration from "./pages/FarmLevelTracking/QRGeneration";
+import FieldMapping from "./pages/FarmLevelTracking/FieldMapping";
 import LocationScanning from "./pages/LocationScanning";
 import AIQualityAssessment from "./pages/AIQualityAssessment";
 import WaterproofTagging from "./pages/WaterproofTagging";
@@ -44,6 +48,10 @@ const App = () => (
             <Route path="/smart-container" element={<SmartContainer />} />
             <Route path="/cold-storage" element={<ColdStorage />} />
             <Route path="/farm-tracking" element={<FarmLevelTracking />} />
+            <Route path="/farm-tracking/harvest-entry" element={<HarvestEntry />} />
+            <Route path="/farm-tracking/lot-management" element={<LotManagement />} />
+            <Route path="/farm-tracking/qr-generation" element={<QRGeneration />} />
+            <Route path="/farm-tracking/field-mapping" element={<FieldMapping />} />
             <Route path="/location-scanning" element={<LocationScanning />} />
             <Route path="/ai-assessment" element={<AIQualityAssessment />} />
             <Route path="/waterproof-tagging" element={<WaterproofTagging />} />
