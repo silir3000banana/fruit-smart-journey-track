@@ -7,10 +7,10 @@ interface Profile {
   user_id: string;
   email: string | null;
   full_name: string | null;
-  role: 'farmer' | 'supervisor' | 'cold_storage_operator' | 'ripening_operator' | 'retailer' | 'admin';
   phone: string | null;
   company_name: string | null;
   location: string | null;
+  avatar_url: string | null;
 }
 
 interface AuthContextType {

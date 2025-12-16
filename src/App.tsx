@@ -25,6 +25,10 @@ import WaterproofTagging from "./pages/WaterproofTagging";
 import PackingLogistics from "./pages/PackingLogistics";
 import ComplianceCertification from "./pages/ComplianceCertification";
 import ConsumerPortal from "./pages/ConsumerPortal";
+import BatchTrace from "./pages/BatchTrace";
+import Warehouse from "./pages/Warehouse";
+import Analytics from "./pages/Analytics";
+import Alerts from "./pages/Alerts";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -58,6 +62,10 @@ const App = () => (
             <Route path="/packing-logistics" element={<PackingLogistics />} />
             <Route path="/compliance-certification" element={<ComplianceCertification />} />
             <Route path="/consumer-portal" element={<ConsumerPortal />} />
+            <Route path="/batch-trace" element={<BatchTrace />} />
+            <Route path="/warehouse" element={<Warehouse />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/alerts" element={<Alerts />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
