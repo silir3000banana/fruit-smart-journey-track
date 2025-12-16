@@ -1,6 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import { forwardRef } from "react";
+import { 
+  Leaf, 
+  QrCode, 
+  Truck, 
+  Warehouse, 
+  BarChart3, 
+  Bell, 
+  ThermometerSnowflake,
+  Package,
+  Cpu,
+  Store
+} from "lucide-react";
 
 const Header = () => {
   const { user, signOut } = useAuth();
@@ -16,32 +38,113 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">S</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center shadow-lg">
+              <span className="text-primary-foreground font-bold text-lg">S3</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">SmartHarvest</h1>
-              <p className="text-xs text-muted-foreground">Value Chain Platform</p>
+              <h1 className="text-xl font-bold text-foreground">Silir3000</h1>
+              <p className="text-[10px] text-muted-foreground leading-tight">by iYarKai Tech Lab</p>
             </div>
           </div>
           
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#modules" className="text-foreground hover:text-primary transition-colors">Modules</a>
-            <a href="/ai-grading" className="text-foreground hover:text-primary transition-colors">AI Grading</a>
-            <a href="/smart-container" className="text-foreground hover:text-primary transition-colors">Smart Container</a>
-            <a href="/cold-storage" className="text-foreground hover:text-primary transition-colors">Cold Storage</a>
-            <a href="/pricing" className="text-foreground hover:text-primary transition-colors">Pricing</a>
-            <a href="/contact" className="text-foreground hover:text-primary transition-colors">Contact</a>
-          </nav>
+          <NavigationMenu className="hidden lg:flex">
+            <NavigationMenuList>
+              {/* Traceability - Primary Feature */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent">
+                  <QrCode className="w-4 h-4 mr-1" />
+                  Traceability
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
+                    <li className="row-span-3">
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to="/batch-trace"
+                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-primary/50 to-primary p-6 no-underline outline-none focus:shadow-md"
+                        >
+                          <QrCode className="h-6 w-6 text-primary-foreground" />
+                          <div className="mb-2 mt-4 text-lg font-medium text-primary-foreground">
+                            Trace Batch
+                          </div>
+                          <p className="text-sm leading-tight text-primary-foreground/80">
+                            Complete farm-to-retail journey tracking. Enter Batch ID or scan QR.
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <ListItem href="/consumer-portal" title="Consumer Portal" icon={<Store className="w-4 h-4" />}>
+                      Public view for end consumers
+                    </ListItem>
+                    <ListItem href="/farm-tracking" title="Farm Tracking" icon={<Leaf className="w-4 h-4" />}>
+                      Harvest & batch creation
+                    </ListItem>
+                    <ListItem href="/packing-logistics" title="Post-Harvest" icon={<Package className="w-4 h-4" />}>
+                      Sorting, grading & packing
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Operations */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent">Operations</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                    <ListItem href="/cold-storage" title="Ripening & Storage" icon={<ThermometerSnowflake className="w-4 h-4" />}>
+                      Chamber control & monitoring
+                    </ListItem>
+                    <ListItem href="/smart-container" title="Cold Chain Transport" icon={<Truck className="w-4 h-4" />}>
+                      Real-time logistics tracking
+                    </ListItem>
+                    <ListItem href="/warehouse" title="Warehouse" icon={<Warehouse className="w-4 h-4" />}>
+                      Inventory & FIFO management
+                    </ListItem>
+                    <ListItem href="/ai-grading" title="AI Quality Grading" icon={<Cpu className="w-4 h-4" />}>
+                      Vision-based quality assessment
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Analytics */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent">Insights</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[300px] gap-3 p-4">
+                    <ListItem href="/analytics" title="Analytics" icon={<BarChart3 className="w-4 h-4" />}>
+                      Wastage, quality & performance metrics
+                    </ListItem>
+                    <ListItem href="/alerts" title="Alerts" icon={<Bell className="w-4 h-4" />}>
+                      Temperature breaches & notifications
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <Link to="/pricing" className="text-sm font-medium text-foreground hover:text-primary transition-colors px-3 py-2">
+                  Pricing
+                </Link>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors px-3 py-2">
+                  Contact
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             {user ? (
               <>
-                <Button variant="ghost" size="sm" onClick={() => navigate('/dashboard')}>
-                  🏠 Dashboard
+                <Button variant="ghost" size="sm" onClick={() => navigate('/batch-trace')}>
+                  <QrCode className="w-4 h-4 mr-1" />
+                  Trace
                 </Button>
-                <Button variant="ghost" size="sm" onClick={() => navigate('/profile')}>
-                  👤 Profile
+                <Button variant="ghost" size="sm" onClick={() => navigate('/dashboard')}>
+                  Dashboard
                 </Button>
                 <Button variant="outline" size="sm" onClick={handleSignOut}>
                   Sign Out
@@ -49,8 +152,9 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Button variant="outline" size="sm" onClick={() => navigate('/contact')}>
-                  Book Demo
+                <Button variant="outline" size="sm" onClick={() => navigate('/batch-trace')}>
+                  <QrCode className="w-4 h-4 mr-1" />
+                  Trace Batch
                 </Button>
                 <Button variant="hero" size="sm" onClick={() => navigate('/auth')}>
                   Sign In
@@ -63,5 +167,40 @@ const Header = () => {
     </header>
   );
 };
+
+interface ListItemProps extends React.ComponentPropsWithoutRef<"a"> {
+  title: string;
+  icon?: React.ReactNode;
+  href: string;
+}
+
+const ListItem = forwardRef<React.ElementRef<"a">, ListItemProps>(
+  ({ className, title, children, icon, href, ...props }, ref) => {
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <Link
+            to={href}
+            ref={ref}
+            className={cn(
+              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              className
+            )}
+            {...props}
+          >
+            <div className="flex items-center gap-2 text-sm font-medium leading-none">
+              {icon}
+              {title}
+            </div>
+            <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+              {children}
+            </p>
+          </Link>
+        </NavigationMenuLink>
+      </li>
+    );
+  }
+);
+ListItem.displayName = "ListItem";
 
 export default Header;
