@@ -110,7 +110,7 @@ const Profile = () => {
                       <Label htmlFor="role">Role (Read Only)</Label>
                       <Input
                         id="role"
-                        value={profile.role.replace('_', ' ').toUpperCase()}
+                        value={profile.role?.replace(/_/g, ' ').toUpperCase() || 'N/A'}
                         disabled
                         className="bg-muted"
                       />
@@ -162,7 +162,7 @@ const Profile = () => {
                 <div className="flex justify-between items-center p-3 bg-muted/30 rounded-lg">
                   <div>
                     <p className="font-medium">Role</p>
-                    <p className="text-sm text-muted-foreground capitalize">{profile.role.replace('_', ' ')}</p>
+                    <p className="text-sm text-muted-foreground capitalize">{profile.role?.replace(/_/g, ' ') || 'N/A'}</p>
                   </div>
                 </div>
 

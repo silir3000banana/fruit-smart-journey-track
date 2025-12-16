@@ -39,16 +39,21 @@ const Dashboard = () => {
     switch (profile.role) {
       case 'farmer':
         return <ComprehensiveFarmerDashboard />;
-      case 'supervisor':
+      case 'packhouse_manager':
+      case 'quality_manager':
         return <SupervisorDashboard />;
-      case 'cold_storage_operator':
+      case 'warehouse_admin':
         return <ColdStorageDashboard />;
-      case 'ripening_operator':
+      case 'ripening_manager':
         return <RipeningDashboard />;
-      case 'retailer':
+      case 'retail_manager':
         return <EnhancedRetailerDashboard />;
+      case 'logistics_manager':
+        return <SupervisorDashboard />;
       case 'admin':
         return <AdminDashboard />;
+      case 'consumer':
+        return <RetailerDashboard />;
       default:
         return <AdminDashboard />;
     }
