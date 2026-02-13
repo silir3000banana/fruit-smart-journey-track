@@ -106,20 +106,33 @@ const ConsumerPortal = () => {
     }
   };
 
+  const validateQRCode = (qr: string): boolean => {
+    return /^[A-Za-z0-9\-]{1,50}$/.test(qr);
+  };
+
   const handleScanQR = () => {
-    if (qrCode.trim()) {
-      setJourneyData(mockJourneyData);
-      toast({
-        title: "Product Found!",
-        description: "Journey information loaded successfully.",
-      });
-    } else {
+    const trimmed = qrCode.trim();
+    if (!trimmed) {
       toast({
         title: "Enter QR Code",
         description: "Please enter a QR code to trace the product journey.",
         variant: "destructive"
       });
+      return;
     }
+    if (!validateQRCode(trimmed)) {
+      toast({
+        title: "Invalid QR Code",
+        description: "QR code must be alphanumeric (letters, numbers, hyphens) and up to 50 characters.",
+        variant: "destructive"
+      });
+      return;
+    }
+    setJourneyData(mockJourneyData);
+    toast({
+      title: "Product Found!",
+      description: "Journey information loaded successfully.",
+    });
   };
 
   const getStatusColor = (status: string) => {
