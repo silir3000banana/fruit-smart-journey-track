@@ -34,25 +34,24 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-      <div className="container mx-auto px-6 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+      <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-primary-foreground font-bold text-lg">S3</span>
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => navigate('/')}>
+            <div className="w-9 h-9 bg-gradient-primary rounded-lg flex items-center justify-center shadow-elegant">
+              <span className="text-primary-foreground font-bold text-sm">S3</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">Silir3000</h1>
-              <p className="text-[10px] text-muted-foreground leading-tight">by iYarKai Tech Lab</p>
+              <h1 className="text-base font-bold text-foreground tracking-tight">SILIR 3000<span className="text-primary">™</span></h1>
+              <p className="text-[9px] text-muted-foreground leading-tight tracking-wide uppercase">iYarKai Tech Lab</p>
             </div>
           </div>
           
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
-              {/* Traceability - Primary Feature */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">
-                  <QrCode className="w-4 h-4 mr-1" />
+                <NavigationMenuTrigger className="bg-transparent text-sm">
+                  <QrCode className="w-3.5 h-3.5 mr-1.5" />
                   Traceability
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -61,13 +60,13 @@ const Header = () => {
                       <NavigationMenuLink asChild>
                         <Link
                           to="/batch-trace"
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-primary/50 to-primary p-6 no-underline outline-none focus:shadow-md"
+                          className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-hero p-6 no-underline outline-none focus:shadow-md"
                         >
-                          <QrCode className="h-6 w-6 text-primary-foreground" />
-                          <div className="mb-2 mt-4 text-lg font-medium text-primary-foreground">
+                          <QrCode className="h-5 w-5 text-primary" />
+                          <div className="mb-2 mt-4 text-lg font-semibold text-primary-foreground">
                             Trace Batch
                           </div>
-                          <p className="text-sm leading-tight text-primary-foreground/80">
+                          <p className="text-sm leading-tight text-primary-foreground/60">
                             Complete farm-to-retail journey tracking. Enter Batch ID or scan QR.
                           </p>
                         </Link>
@@ -86,9 +85,8 @@ const Header = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* Operations */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">Operations</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent text-sm">Operations</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
                     <ListItem href="/cold-storage" title="Ripening & Storage" icon={<ThermometerSnowflake className="w-4 h-4" />}>
@@ -107,9 +105,8 @@ const Header = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* Analytics */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">Insights</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent text-sm">Insights</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[300px] gap-3 p-4">
                     <ListItem href="/analytics" title="Analytics" icon={<BarChart3 className="w-4 h-4" />}>
@@ -136,7 +133,7 @@ const Header = () => {
             </NavigationMenuList>
           </NavigationMenu>
           
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
             {user ? (
               <>
                 <Button variant="ghost" size="sm" onClick={() => navigate('/batch-trace')}>
@@ -152,11 +149,11 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Button variant="outline" size="sm" onClick={() => navigate('/batch-trace')}>
+                <Button variant="ghost" size="sm" onClick={() => navigate('/batch-trace')}>
                   <QrCode className="w-4 h-4 mr-1" />
-                  Trace Batch
+                  Trace
                 </Button>
-                <Button variant="hero" size="sm" onClick={() => navigate('/auth')}>
+                <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary-glow" onClick={() => navigate('/auth')}>
                   Sign In
                 </Button>
               </>
@@ -183,7 +180,7 @@ const ListItem = forwardRef<React.ElementRef<"a">, ListItemProps>(
             to={href}
             ref={ref}
             className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
               className
             )}
             {...props}
