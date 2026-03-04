@@ -59,7 +59,7 @@ const HeroSection = () => {
                 <Button
                   size="lg"
                   className="bg-primary text-primary-foreground hover:bg-primary-glow text-base px-8 py-6 group shadow-glow"
-                  onClick={() => navigate('/dashboard')}
+                  onClick={() => navigate('/silir')}
                 >
                   View Dashboard
                   <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
