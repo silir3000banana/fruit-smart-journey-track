@@ -32,7 +32,25 @@ import Alerts from "./pages/Alerts";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+// Silir SaaS pages
+import SilirLayout from "./components/SilirLayout";
+import SilirDashboard from "./pages/silir/SilirDashboard";
+import Operations from "./pages/silir/Operations";
+import Facilities from "./pages/silir/Facilities";
+import QualityAI from "./pages/silir/QualityAI";
+import Inventory from "./pages/silir/Inventory";
+import Dispatch from "./pages/silir/Dispatch";
+import Traceability from "./pages/silir/Traceability";
+import Reports from "./pages/silir/Reports";
+import SilirAdmin from "./pages/silir/SilirAdmin";
+
 const queryClient = new QueryClient();
+
+const SilirPage = ({ children }: { children: React.ReactNode }) => (
+  <ProtectedRoute>
+    <SilirLayout>{children}</SilirLayout>
+  </ProtectedRoute>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -49,6 +67,17 @@ const App = () => (
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/consumer-portal" element={<ConsumerPortal />} />
             <Route path="/batch-trace" element={<BatchTrace />} />
+
+            {/* Silir SaaS prototype routes */}
+            <Route path="/silir" element={<SilirPage><SilirDashboard /></SilirPage>} />
+            <Route path="/silir/operations" element={<SilirPage><Operations /></SilirPage>} />
+            <Route path="/silir/facilities" element={<SilirPage><Facilities /></SilirPage>} />
+            <Route path="/silir/quality-ai" element={<SilirPage><QualityAI /></SilirPage>} />
+            <Route path="/silir/inventory" element={<SilirPage><Inventory /></SilirPage>} />
+            <Route path="/silir/dispatch" element={<SilirPage><Dispatch /></SilirPage>} />
+            <Route path="/silir/traceability" element={<SilirPage><Traceability /></SilirPage>} />
+            <Route path="/silir/reports" element={<SilirPage><Reports /></SilirPage>} />
+            <Route path="/silir/admin" element={<SilirPage><SilirAdmin /></SilirPage>} />
 
             {/* Protected routes - require authentication */}
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
