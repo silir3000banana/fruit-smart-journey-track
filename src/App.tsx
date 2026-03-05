@@ -69,6 +69,8 @@ const App = () => (
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/consumer-portal" element={<ConsumerPortal />} />
             <Route path="/batch-trace" element={<BatchTrace />} />
+            <Route path="/know-your-fruit" element={<KnowYourFruit />} />
+            <Route path="/fruit-journey/:batchId" element={<FruitJourney />} />
 
             {/* Silir SaaS prototype routes */}
             <Route path="/silir" element={<SilirPage><SilirDashboard /></SilirPage>} />
