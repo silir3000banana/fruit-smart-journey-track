@@ -54,12 +54,12 @@ export default function SilirLayout({ children }: SilirLayoutProps) {
       >
         {/* Logo */}
         <div className="h-14 flex items-center px-4 border-b border-white/10">
-          <div className="w-8 h-8 rounded-lg bg-[#1E7F5A] flex items-center justify-center font-bold text-sm shrink-0">
-            S
+          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center font-bold text-sm shrink-0 text-primary-foreground">
+            FF
           </div>
           {sidebarOpen && (
             <span className="ml-3 font-semibold text-sm tracking-tight">
-              Silir
+              FruitFlow AI
             </span>
           )}
         </div>
