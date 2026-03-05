@@ -1,21 +1,29 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import ExecutiveDashboardSection from "@/components/ExecutiveDashboardSection";
+import SupplyChainJourneySection from "@/components/SupplyChainJourneySection";
+import ScanCenterSection from "@/components/ScanCenterSection";
+import AIInspectionSection from "@/components/AIInspectionSection";
 import ModulesSection from "@/components/ModulesSection";
+import IoTMonitoringSection from "@/components/IoTMonitoringSection";
 import ComplianceSection from "@/components/ComplianceSection";
-import BusinessModelsSection from "@/components/BusinessModelsSection";
+import BusinessImpactSection from "@/components/BusinessImpactSection";
 import Footer from "@/components/Footer";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <HeroSection />
-      <ModulesSection />
-      <ComplianceSection />
-      <BusinessModelsSection />
-      <Footer />
-    </div>
-  );
-};
+const Index = () => (
+  <div className="min-h-screen bg-background">
+    <Header />
+    <HeroSection />
+    <ExecutiveDashboardSection />
+    <SupplyChainJourneySection />
+    <ScanCenterSection />
+    <AIInspectionSection />
+    <ModulesSection />
+    <IoTMonitoringSection />
+    <ComplianceSection />
+    <BusinessImpactSection />
+    <Footer />
+  </div>
+);
 
 export default Index;
