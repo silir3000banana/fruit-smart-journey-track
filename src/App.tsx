@@ -26,6 +26,8 @@ import PackingLogistics from "./pages/PackingLogistics";
 import ComplianceCertification from "./pages/ComplianceCertification";
 import ConsumerPortal from "./pages/ConsumerPortal";
 import BatchTrace from "./pages/BatchTrace";
+import KnowYourFruit from "./pages/consumer/KnowYourFruit";
+import FruitJourney from "./pages/consumer/FruitJourney";
 import Warehouse from "./pages/Warehouse";
 import Analytics from "./pages/Analytics";
 import Alerts from "./pages/Alerts";
