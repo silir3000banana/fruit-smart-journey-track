@@ -21,6 +21,7 @@ const Index = () => (
     <AIInspectionSection />
     <ModulesSection />
     <IoTMonitoringSection />
+    <ShipmentTrackingSection />
     <ComplianceSection />
     <BusinessImpactSection />
     <Footer />
