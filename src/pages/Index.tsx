@@ -6,6 +6,7 @@ import ScanCenterSection from "@/components/ScanCenterSection";
 import AIInspectionSection from "@/components/AIInspectionSection";
 import ModulesSection from "@/components/ModulesSection";
 import IoTMonitoringSection from "@/components/IoTMonitoringSection";
+import ShipmentTrackingSection from "@/components/ShipmentTrackingSection";
 import ComplianceSection from "@/components/ComplianceSection";
 import BusinessImpactSection from "@/components/BusinessImpactSection";
 import Footer from "@/components/Footer";
@@ -20,6 +21,7 @@ const Index = () => (
     <AIInspectionSection />
     <ModulesSection />
     <IoTMonitoringSection />
+    <ShipmentTrackingSection />
     <ComplianceSection />
     <BusinessImpactSection />
     <Footer />
