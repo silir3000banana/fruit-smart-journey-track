@@ -11,44 +11,42 @@ const AIInspectionSection = () => {
     <section className="py-20 bg-gradient-subtle">
       <div className="container mx-auto px-6">
         <div className="text-center mb-14">
-          <Badge variant="secondary" className="mb-4 text-xs tracking-wider uppercase px-4 py-1">AI Vision</Badge>
+          <Badge variant="secondary" className="mb-4 text-xs tracking-wider uppercase px-4 py-1.5 rounded-full">AI Vision</Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">AI Camera Fruit Inspection</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">Computer vision powered quality grading, bruising detection, and size classification.</p>
         </div>
 
         <div className="max-w-4xl mx-auto grid lg:grid-cols-2 gap-6">
           {/* Camera */}
-          <Card className="border-border/50 overflow-hidden">
+          <Card className="border-border/40 overflow-hidden rounded-2xl">
             <CardContent className="p-0">
               <div className="relative bg-foreground/5 aspect-[4/3] flex items-center justify-center">
                 {!captured ? (
                   <>
-                    {/* Scanning frame */}
-                    <div className="absolute inset-8 border-2 border-dashed border-primary/40 rounded-xl" />
-                    <div className="absolute top-8 left-8 w-6 h-6 border-t-2 border-l-2 border-primary rounded-tl-lg" />
-                    <div className="absolute top-8 right-8 w-6 h-6 border-t-2 border-r-2 border-primary rounded-tr-lg" />
-                    <div className="absolute bottom-8 left-8 w-6 h-6 border-b-2 border-l-2 border-primary rounded-bl-lg" />
-                    <div className="absolute bottom-8 right-8 w-6 h-6 border-b-2 border-r-2 border-primary rounded-br-lg" />
+                    <div className="absolute inset-8 border-2 border-dashed border-primary/30 rounded-2xl" />
+                    <div className="absolute top-8 left-8 w-6 h-6 border-t-2 border-l-2 border-primary rounded-tl-xl" />
+                    <div className="absolute top-8 right-8 w-6 h-6 border-t-2 border-r-2 border-primary rounded-tr-xl" />
+                    <div className="absolute bottom-8 left-8 w-6 h-6 border-b-2 border-l-2 border-primary rounded-bl-xl" />
+                    <div className="absolute bottom-8 right-8 w-6 h-6 border-b-2 border-r-2 border-primary rounded-br-xl" />
                     <div className="text-center z-10">
                       <Camera className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
                       <p className="text-sm text-muted-foreground">Position fruit in frame</p>
                     </div>
                   </>
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-warning/10 to-primary/10 flex items-center justify-center relative animate-fade-in">
-                    {/* Simulated detection overlay */}
-                    <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 border-2 border-success rounded-lg">
-                      <span className="absolute -top-5 left-0 text-[10px] font-mono bg-success text-success-foreground px-1.5 py-0.5 rounded">Grade A 91%</span>
+                  <div className="w-full h-full flex items-center justify-center relative animate-fade-in" style={{ background: 'linear-gradient(135deg, hsl(30 92% 50% / 0.08), hsl(45 100% 65% / 0.08))' }}>
+                    <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 border-2 border-success rounded-xl">
+                      <span className="absolute -top-5 left-0 text-[10px] font-mono bg-success text-success-foreground px-1.5 py-0.5 rounded-lg">Grade A 91%</span>
                     </div>
-                    <div className="absolute top-[55%] left-[60%] w-[25%] h-[30%] border-2 border-warning rounded-lg">
-                      <span className="absolute -top-5 left-0 text-[10px] font-mono bg-warning text-warning-foreground px-1.5 py-0.5 rounded">Bruise 3%</span>
+                    <div className="absolute top-[55%] left-[60%] w-[25%] h-[30%] border-2 border-warning rounded-xl">
+                      <span className="absolute -top-5 left-0 text-[10px] font-mono bg-warning text-warning-foreground px-1.5 py-0.5 rounded-lg">Bruise 3%</span>
                     </div>
-                    <div className="w-24 h-24 rounded-full bg-primary/20" />
+                    <div className="w-24 h-24 rounded-full" style={{ background: 'hsl(45 100% 65% / 0.15)' }} />
                   </div>
                 )}
               </div>
               <div className="p-4">
-                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-glow" onClick={() => setCaptured(!captured)}>
+                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-glow shadow-elegant hover:shadow-glow transition-all duration-300 rounded-xl" onClick={() => setCaptured(!captured)}>
                   <Camera className="w-4 h-4 mr-2" />
                   {captured ? "Retake Image" : "Capture Image"}
                 </Button>
@@ -60,7 +58,7 @@ const AIInspectionSection = () => {
           <div className="space-y-4">
             {captured ? (
               <div className="animate-slide-up space-y-4">
-                <Card className="border-border/50">
+                <Card className="border-border/40 rounded-2xl">
                   <CardContent className="p-5">
                     <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
                       <Eye className="w-4 h-4 text-primary" /> Analysis Results
@@ -86,7 +84,7 @@ const AIInspectionSection = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="border-border/50">
+                <Card className="border-border/40 rounded-2xl">
                   <CardContent className="p-5">
                     <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                       <Zap className="w-4 h-4 text-warning" /> AI Recommendation
@@ -97,13 +95,13 @@ const AIInspectionSection = () => {
                         { label: "Needs Ripening", status: false },
                         { label: "Send to Local Market", status: false },
                       ].map((rec, i) => (
-                        <div key={i} className={`flex items-center gap-2 p-2.5 rounded-lg text-sm ${rec.status ? "bg-success/5 text-success border border-success/20" : "bg-muted/50 text-muted-foreground border border-border/30"}`}>
+                        <div key={i} className={`flex items-center gap-2 p-2.5 rounded-xl text-sm transition-colors duration-200 ${rec.status ? "bg-success/5 text-success border border-success/20" : "bg-muted/40 text-muted-foreground border border-border/30"}`}>
                           <div className={`w-2 h-2 rounded-full ${rec.status ? "bg-success" : "bg-muted-foreground/30"}`} />
                           {rec.label}
                         </div>
                       ))}
                     </div>
-                    <div className="mt-4 p-3 rounded-lg bg-primary/5 border border-primary/20 text-center">
+                    <div className="mt-4 p-3 rounded-xl border border-primary/20 text-center banana-glow" style={{ background: 'hsl(45 100% 65% / 0.05)' }}>
                       <div className="text-xs text-muted-foreground">Overall Quality Score</div>
                       <div className="text-3xl font-bold text-primary mt-1">91%</div>
                     </div>

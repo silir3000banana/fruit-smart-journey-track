@@ -30,18 +30,18 @@ const IoTMonitoringSection = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-14">
-          <Badge variant="secondary" className="mb-4 text-xs tracking-wider uppercase px-4 py-1">IoT Monitoring</Badge>
+          <Badge variant="secondary" className="mb-4 text-xs tracking-wider uppercase px-4 py-1.5 rounded-full">IoT Monitoring</Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Sensor & Chamber Monitoring</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">Live IoT sensor feeds from ripening chambers and cold storage units.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {sensors.map((s, i) => (
-            <Card key={i} className={`border-border/50 hover:shadow-elegant transition-all ${s.status === "alert" ? "border-warning/50" : ""}`}>
+            <Card key={i} className={`border-border/40 hover:shadow-elegant hover:-translate-y-0.5 transition-all duration-300 rounded-2xl ${s.status === "alert" ? "border-warning/40" : ""}`}>
               <CardContent className="p-5">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm font-semibold text-foreground">{chambers[i]}</span>
-                  <Badge variant="outline" className={`text-[10px] ${
+                  <Badge variant="outline" className={`text-[10px] rounded-full ${
                     s.status === "active" ? "bg-success/10 text-success border-success/20" :
                     s.status === "cold" ? "bg-info/10 text-info border-info/20" :
                     "bg-warning/10 text-warning border-warning/20"
@@ -67,15 +67,15 @@ const IoTMonitoringSection = () => {
         </div>
 
         {/* Alert */}
-        <Card className="border-warning/30 bg-warning/5 max-w-2xl mx-auto">
+        <Card className="border-warning/30 max-w-2xl mx-auto rounded-2xl" style={{ background: 'hsl(30 92% 50% / 0.04)' }}>
           <CardContent className="p-5 flex items-start gap-4">
-            <div className="w-10 h-10 rounded-lg bg-warning/10 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-warning/10 flex items-center justify-center flex-shrink-0">
               <AlertTriangle className="w-5 h-5 text-warning" />
             </div>
             <div className="flex-1">
               <div className="flex items-center justify-between">
                 <h4 className="text-sm font-semibold text-foreground">Temperature Deviation — Chamber 3</h4>
-                <Badge variant="outline" className="text-[10px] bg-warning/10 text-warning border-warning/20">Urgent</Badge>
+                <Badge variant="outline" className="text-[10px] bg-warning/10 text-warning border-warning/20 rounded-full">Urgent</Badge>
               </div>
               <p className="text-xs text-muted-foreground mt-1">Current: 19.5°C • Required: 15°C</p>
               <div className="flex items-center gap-1.5 mt-2 text-xs text-warning font-medium">
