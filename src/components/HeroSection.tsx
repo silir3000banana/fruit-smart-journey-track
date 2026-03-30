@@ -12,13 +12,15 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-hero">
+    <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-hero grain">
+      {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(0 0% 100%) 1px, transparent 0)',
         backgroundSize: '48px 48px'
       }} />
-      <div className="absolute top-1/4 -left-40 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[100px]" />
-      <div className="absolute bottom-1/3 -right-40 w-[400px] h-[400px] bg-info/6 rounded-full blur-[100px]" />
+      {/* Banana glow orbs */}
+      <div className="absolute top-1/4 -left-40 w-[500px] h-[500px] rounded-full blur-[120px]" style={{ background: 'hsl(45 100% 65% / 0.06)' }} />
+      <div className="absolute bottom-1/3 -right-40 w-[400px] h-[400px] rounded-full blur-[120px]" style={{ background: 'hsl(205 80% 56% / 0.04)' }} />
 
       <div className="container mx-auto px-6 py-24 relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -39,23 +41,23 @@ const HeroSection = () => {
                 </span>
               </h1>
 
-              <p className="text-lg text-white/55 mb-10 leading-relaxed max-w-lg">
+              <p className="text-lg text-white/50 mb-10 leading-relaxed max-w-lg">
                 Scan barcodes, inspect quality with AI cameras, and optimize supply chain decisions — from farm gate to retail shelf.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-14">
                 <Button
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary-glow text-sm px-7 py-6 group shadow-glow"
+                  className="bg-primary text-primary-foreground hover:bg-primary-glow text-sm px-7 py-6 group shadow-glow transition-all duration-300 hover:shadow-[0_0_50px_hsl(45_100%_65%/0.35)]"
                   onClick={() => navigate('/contact')}
                 >
                   Book Demo
-                  <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" />
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-sm px-7 py-6 border-white/20 text-white hover:bg-white/5"
+                  className="text-sm px-7 py-6 border-white/15 text-white/90 hover:bg-white/5 hover:border-white/25 transition-all duration-200"
                   onClick={() => navigate('/silir')}
                 >
                   <Play className="w-4 h-4 mr-2" />
@@ -64,7 +66,7 @@ const HeroSection = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-sm px-7 py-6 border-white/20 text-white hover:bg-white/5"
+                  className="text-sm px-7 py-6 border-white/15 text-white/90 hover:bg-white/5 hover:border-white/25 transition-all duration-200"
                   onClick={() => navigate('/contact')}
                 >
                   <Calculator className="w-4 h-4 mr-2" />
@@ -76,7 +78,7 @@ const HeroSection = () => {
                 {stats.map((s, i) => (
                   <div key={i} className="text-center">
                     <div className="text-2xl font-bold text-primary">{s.value}</div>
-                    <div className="text-[11px] text-white/45 mt-1">{s.label}</div>
+                    <div className="text-[11px] text-white/40 mt-1">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -84,7 +86,7 @@ const HeroSection = () => {
 
             {/* Right — Executive Dashboard Preview */}
             <div className="animate-slide-up" style={{ animationDelay: '0.15s' }}>
-              <div className="glass-strong rounded-2xl p-6 space-y-4">
+              <div className="glass-strong rounded-2xl p-6 space-y-4 banana-glow">
                 <div className="flex items-center justify-between mb-1">
                   <p className="text-xs font-semibold tracking-wider uppercase text-muted-foreground">Executive Overview</p>
                   <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-success/10 border border-success/20">
@@ -95,12 +97,12 @@ const HeroSection = () => {
 
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { icon: Package, label: "Batches Tracked", value: "1,247", trend: "+23", up: true },
-                    { icon: Shield, label: "Spoilage Prevented", value: "₹24.5L", trend: "+12%", up: true },
-                    { icon: BarChart3, label: "Efficiency", value: "94.2%", trend: "+3.1%", up: true },
-                    { icon: Zap, label: "Active Shipments", value: "38", trend: "+5", up: true },
+                    { icon: Package, label: "Batches Tracked", value: "1,247", trend: "+23" },
+                    { icon: Shield, label: "Spoilage Prevented", value: "₹24.5L", trend: "+12%" },
+                    { icon: BarChart3, label: "Efficiency", value: "94.2%", trend: "+3.1%" },
+                    { icon: Zap, label: "Active Shipments", value: "38", trend: "+5" },
                   ].map((kpi, i) => (
-                    <div key={i} className="bg-card/60 rounded-xl p-3.5 border border-border/40">
+                    <div key={i} className="bg-card/50 rounded-xl p-3.5 border border-border/30 hover:border-primary/30 transition-colors duration-200">
                       <div className="flex items-center justify-between mb-2">
                         <kpi.icon className="w-4 h-4 text-primary" />
                         <span className="text-[10px] font-medium text-success flex items-center gap-0.5">
@@ -119,8 +121,8 @@ const HeroSection = () => {
                   <div className="flex items-center justify-between">
                     {["Farm", "Collection", "Sorting", "Ripening", "Cold Store", "Transport", "Retail"].map((stage, i, arr) => (
                       <div key={i} className="flex items-center">
-                        <div className={`flex flex-col items-center`}>
-                          <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-bold ${
+                        <div className="flex flex-col items-center">
+                          <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-bold transition-all duration-200 ${
                             i <= 4 ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
                           }`}>
                             {i + 1}

@@ -21,7 +21,7 @@ const SupplyChainJourneySection = () => (
   <section className="py-20 bg-gradient-subtle">
     <div className="container mx-auto px-6">
       <div className="text-center mb-14">
-        <Badge variant="secondary" className="mb-4 text-xs tracking-wider uppercase px-4 py-1">Supply Chain Pipeline</Badge>
+        <Badge variant="secondary" className="mb-4 text-xs tracking-wider uppercase px-4 py-1.5 rounded-full">Supply Chain Pipeline</Badge>
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Fruit Lifecycle Journey</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">Real-time visibility across every stage of the supply chain.</p>
       </div>
@@ -30,8 +30,8 @@ const SupplyChainJourneySection = () => (
         <div className="flex items-start gap-2 min-w-[900px]">
           {stages.map((stage, i) => (
             <div key={i} className="flex items-start">
-              <div className="glass-strong rounded-xl p-5 w-[130px] text-center hover:shadow-elegant transition-all duration-300 animate-slide-up" style={{ animationDelay: `${i * 0.07}s` }}>
-                <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center mx-auto mb-3">
+              <div className="glass-strong rounded-2xl p-5 w-[130px] text-center hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 animate-slide-up" style={{ animationDelay: `${i * 0.07}s` }}>
+                <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center mx-auto mb-3">
                   <stage.icon className="w-5 h-5 text-primary" />
                 </div>
                 <div className="text-sm font-semibold text-foreground mb-3">{stage.label}</div>

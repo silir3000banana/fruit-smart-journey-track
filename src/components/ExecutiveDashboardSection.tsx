@@ -21,7 +21,7 @@ const ExecutiveDashboardSection = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-14">
-          <Badge variant="secondary" className="mb-4 text-xs tracking-wider uppercase px-4 py-1">
+          <Badge variant="secondary" className="mb-4 text-xs tracking-wider uppercase px-4 py-1.5 rounded-full">
             Executive Dashboard
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -35,10 +35,10 @@ const ExecutiveDashboardSection = () => {
         {/* KPI Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
           {metrics.map((m, i) => (
-            <Card key={i} className="bg-card hover:shadow-elegant border-border/50 transition-all duration-300 animate-slide-up" style={{ animationDelay: `${i * 0.06}s` }}>
+            <Card key={i} className="bg-card hover:shadow-elegant border-border/40 transition-all duration-300 hover:-translate-y-0.5 animate-slide-up" style={{ animationDelay: `${i * 0.06}s` }}>
               <CardContent className="p-5">
                 <div className="flex items-center justify-between mb-3">
-                  <div className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center">
                     <m.icon className="w-4 h-4 text-primary" />
                   </div>
                   <span className={`text-[11px] font-semibold flex items-center gap-0.5 ${m.up ? "text-success" : "text-warning"}`}>
@@ -55,15 +55,14 @@ const ExecutiveDashboardSection = () => {
 
         {/* Charts row */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {/* Spoilage Trend */}
-          <Card className="border-border/50 hover:shadow-elegant transition-all">
+          <Card className="border-border/40 hover:shadow-elegant transition-all duration-300">
             <CardContent className="p-6">
               <h3 className="text-sm font-semibold text-foreground mb-4">Spoilage Trend</h3>
               <div className="flex items-end gap-2 h-32">
                 {spoilageTrend.map((d, i) => (
                   <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                    <div className="w-full bg-primary/20 rounded-t-md relative overflow-hidden" style={{ height: `${d.value * 8}px` }}>
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary to-primary-glow opacity-80 rounded-t-md" />
+                    <div className="w-full rounded-t-lg relative overflow-hidden" style={{ height: `${d.value * 8}px`, background: 'hsl(45 100% 65% / 0.15)' }}>
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary to-primary-glow opacity-80 rounded-t-lg" />
                     </div>
                     <span className="text-[9px] text-muted-foreground">{d.month}</span>
                   </div>
@@ -73,8 +72,7 @@ const ExecutiveDashboardSection = () => {
             </CardContent>
           </Card>
 
-          {/* Profit Saved */}
-          <Card className="border-border/50 hover:shadow-elegant transition-all">
+          <Card className="border-border/40 hover:shadow-elegant transition-all duration-300">
             <CardContent className="p-6">
               <h3 className="text-sm font-semibold text-foreground mb-4">Profit Saved (₹ Lakhs)</h3>
               <div className="space-y-3">
@@ -98,22 +96,21 @@ const ExecutiveDashboardSection = () => {
             </CardContent>
           </Card>
 
-          {/* Dispatch Optimization */}
-          <Card className="border-border/50 hover:shadow-elegant transition-all">
+          <Card className="border-border/40 hover:shadow-elegant transition-all duration-300">
             <CardContent className="p-6">
               <h3 className="text-sm font-semibold text-foreground mb-4">Dispatch Optimization</h3>
               <div className="space-y-4">
                 {[
-                  { batch: "BAN2403A", saving: "₹12,400", status: "Dispatched", color: "bg-success" },
-                  { batch: "MAN2403B", saving: "₹8,900", status: "Ready", color: "bg-primary" },
-                  { batch: "GRP2403C", saving: "₹15,200", status: "Pending", color: "bg-warning" },
+                  { batch: "BAN2403A", saving: "₹12,400", status: "Dispatched", statusClass: "bg-success/10 text-success border-success/20" },
+                  { batch: "MAN2403B", saving: "₹8,900", status: "Ready", statusClass: "bg-primary/10 text-primary border-primary/20" },
+                  { batch: "GRP2403C", saving: "₹15,200", status: "Pending", statusClass: "bg-warning/10 text-warning border-warning/20" },
                 ].map((d, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-muted/50 border border-border/30">
+                  <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-muted/40 border border-border/30 hover:border-primary/20 transition-colors duration-200">
                     <div>
                       <div className="text-sm font-semibold text-foreground">{d.batch}</div>
                       <div className="text-xs text-muted-foreground">Saved {d.saving}</div>
                     </div>
-                    <Badge variant="outline" className={`text-[10px] ${d.color}/10 border-${d.color}/20`}>{d.status}</Badge>
+                    <Badge variant="outline" className={`text-[10px] ${d.statusClass}`}>{d.status}</Badge>
                   </div>
                 ))}
               </div>
