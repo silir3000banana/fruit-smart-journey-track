@@ -27,19 +27,19 @@ const HeroSection = () => {
             <div className="animate-slide-up">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-8">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
-                <span className="text-xs font-semibold tracking-wider uppercase text-primary-foreground/80">
+                <span className="text-xs font-semibold tracking-wider uppercase text-white/80">
                   AI + IoT Supply Chain Intelligence
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-primary-foreground leading-[1.08] mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.08] mb-6">
                 Track. Inspect. Optimize.{" "}
                 <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
                   Every Fruit Batch.
                 </span>
               </h1>
 
-              <p className="text-lg text-primary-foreground/55 mb-10 leading-relaxed max-w-lg">
+              <p className="text-lg text-white/55 mb-10 leading-relaxed max-w-lg">
                 Scan barcodes, inspect quality with AI cameras, and optimize supply chain decisions — from farm gate to retail shelf.
               </p>
 
@@ -55,7 +55,7 @@ const HeroSection = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-sm px-7 py-6 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/5"
+                  className="text-sm px-7 py-6 border-white/20 text-white hover:bg-white/5"
                   onClick={() => navigate('/silir')}
                 >
                   <Play className="w-4 h-4 mr-2" />
@@ -64,7 +64,7 @@ const HeroSection = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-sm px-7 py-6 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/5"
+                  className="text-sm px-7 py-6 border-white/20 text-white hover:bg-white/5"
                   onClick={() => navigate('/contact')}
                 >
                   <Calculator className="w-4 h-4 mr-2" />
@@ -76,7 +76,7 @@ const HeroSection = () => {
                 {stats.map((s, i) => (
                   <div key={i} className="text-center">
                     <div className="text-2xl font-bold text-primary">{s.value}</div>
-                    <div className="text-[11px] text-primary-foreground/45 mt-1">{s.label}</div>
+                    <div className="text-[11px] text-white/45 mt-1">{s.label}</div>
                   </div>
                 ))}
               </div>
