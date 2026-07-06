@@ -11,6 +11,7 @@ import {
   Leaf, QrCode, Truck, Warehouse, BarChart3, Bell,
   ThermometerSnowflake, Package, Cpu, Store
 } from "lucide-react";
+import { BRAND } from "@/lib/brand";
 
 const Header = () => {
   const { user, signOut } = useAuth();
@@ -20,15 +21,24 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-2xl border-b border-border/40">
       <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3 cursor-pointer group" onClick={() => navigate('/')}>
+          <button
+            type="button"
+            aria-label={`${BRAND.platform.name} home`}
+            className="flex items-center space-x-3 cursor-pointer group"
+            onClick={() => navigate('/')}
+          >
             <div className="w-9 h-9 bg-gradient-primary rounded-xl flex items-center justify-center shadow-elegant group-hover:shadow-glow transition-shadow duration-300">
-              <span className="text-primary-foreground font-bold text-sm">FF</span>
+              <span className="text-primary-foreground font-bold text-xs">{BRAND.platform.initials}</span>
             </div>
-            <div>
-              <h1 className="text-base font-bold text-foreground tracking-tight">FruitFlow <span className="text-primary">AI</span></h1>
-              <p className="text-[9px] text-muted-foreground leading-tight tracking-wide uppercase">iYarKai Tech Lab</p>
+            <div className="text-left">
+              <h1 className="text-base font-bold text-foreground tracking-tight">
+                {BRAND.platform.name}
+              </h1>
+              <p className="text-[9px] text-muted-foreground leading-tight tracking-wide uppercase">
+                {BRAND.solution.name}
+              </p>
             </div>
-          </div>
+          </button>
           
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
