@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { QrCode, Mail, Phone, MapPin, Cpu } from "lucide-react";
+import { BRAND, brandCopyright } from "@/lib/brand";
 
 const Footer = () => (
   <footer className="bg-gradient-hero text-white/70 border-t border-white/5 grain">
@@ -8,19 +9,19 @@ const Footer = () => (
         <div className="space-y-4">
           <div className="flex items-center space-x-3">
             <div className="w-9 h-9 bg-gradient-primary rounded-xl flex items-center justify-center shadow-elegant">
-              <span className="text-primary-foreground font-bold text-sm">FF</span>
+              <span className="text-primary-foreground font-bold text-xs">{BRAND.platform.initials}</span>
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">FruitFlow AI</h3>
-              <p className="text-[9px] text-white/35 leading-tight tracking-wide uppercase">iYarKai Tech Lab</p>
+              <h3 className="text-base font-bold text-white">{BRAND.platform.name}</h3>
+              <p className="text-[9px] text-white/35 leading-tight tracking-wide uppercase">{BRAND.solution.name}</p>
             </div>
           </div>
           <p className="text-sm text-white/45 leading-relaxed">
-            AI + IoT powered fruit supply chain intelligence. Barcode traceability and AI camera quality inspection.
+            {BRAND.platform.tagline}. Powering {BRAND.solution.name} — {BRAND.solution.shortTagline.toLowerCase()}.
           </p>
           <div className="flex items-center gap-2 pt-2">
-            <Cpu className="w-3.5 h-3.5 text-primary" />
-            <span className="text-xs text-white/35">AIoT DeepTech for Post-Harvest Intelligence</span>
+            <Cpu className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
+            <span className="text-xs text-white/35">AI-Native Agriculture & Industrial IoT</span>
           </div>
         </div>
         
@@ -47,9 +48,9 @@ const Footer = () => (
         <div>
           <h4 className="font-semibold text-white text-sm mb-4 uppercase tracking-wider">Contact</h4>
           <ul className="space-y-3 text-sm">
-            <li className="flex items-center gap-2"><Mail className="w-4 h-4 text-primary" />info@iyarkai.com</li>
-            <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-primary" />+91 98765 43210</li>
-            <li className="flex items-center gap-2"><MapPin className="w-4 h-4 text-primary" />Chennai, Tamil Nadu, India</li>
+            <li className="flex items-center gap-2"><Mail className="w-4 h-4 text-primary" aria-hidden="true" />{BRAND.company.email}</li>
+            <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-primary" aria-hidden="true" />{BRAND.company.phone}</li>
+            <li className="flex items-center gap-2"><MapPin className="w-4 h-4 text-primary" aria-hidden="true" />{BRAND.company.location}</li>
           </ul>
           <div className="mt-5">
             <Link to="/contact" className="text-sm text-primary hover:text-primary-glow transition-colors duration-200 font-medium">Book a Demo →</Link>
@@ -59,7 +60,7 @@ const Footer = () => (
       
       <div className="border-t border-white/8 mt-12 pt-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-white/35">© 2026 FruitFlow AI by iYarKai Tech Lab (ITL). All rights reserved.</p>
+          <p className="text-xs text-white/35">{brandCopyright()}</p>
           <div className="flex items-center gap-3 text-xs text-white/35">
             <span className="px-2.5 py-1 rounded-lg border border-white/8 bg-white/3">✓ GLOBALG.A.P</span>
             <span className="px-2.5 py-1 rounded-lg border border-white/8 bg-white/3">✓ HACCP</span>
@@ -67,7 +68,7 @@ const Footer = () => (
           </div>
         </div>
         <div className="text-center mt-6">
-          <p className="text-[10px] text-white/20 tracking-widest uppercase">Powered by iYarKai Tech Lab — AIoT DeepTech for Post-Harvest Intelligence</p>
+          <p className="text-[10px] text-white/20 tracking-widest uppercase">{BRAND.platform.name} — {BRAND.platform.tagline}</p>
         </div>
       </div>
     </div>

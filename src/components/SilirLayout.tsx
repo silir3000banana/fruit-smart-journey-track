@@ -54,13 +54,14 @@ export default function SilirLayout({ children }: SilirLayoutProps) {
       >
         {/* Logo */}
         <div className="h-14 flex items-center px-4 border-b border-white/10">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center font-bold text-sm shrink-0 text-primary-foreground">
-            FF
+          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center font-bold text-xs shrink-0 text-primary-foreground">
+            S3
           </div>
           {sidebarOpen && (
-            <span className="ml-3 font-semibold text-sm tracking-tight">
-              FruitFlow AI
-            </span>
+            <div className="ml-3 leading-tight">
+              <div className="font-semibold text-sm tracking-tight">SILIR3000</div>
+              <div className="text-[9px] text-white/40 uppercase tracking-wider">Fruit Smart Journey</div>
+            </div>
           )}
         </div>
 
@@ -102,10 +103,10 @@ export default function SilirLayout({ children }: SilirLayoutProps) {
           <aside className="absolute left-0 inset-y-0 w-64 bg-[#111827] text-white flex flex-col">
             <div className="h-14 flex items-center justify-between px-4 border-b border-white/10">
               <div className="flex items-center">
-                <div className="w-8 h-8 rounded-lg bg-[#1E7F5A] flex items-center justify-center font-bold text-sm">S</div>
-                <span className="ml-3 font-semibold text-sm">Silir</span>
+                <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center font-bold text-xs text-primary-foreground">S3</div>
+                <span className="ml-3 font-semibold text-sm">SILIR3000</span>
               </div>
-              <button onClick={() => setMobileOpen(false)}>
+              <button onClick={() => setMobileOpen(false)} aria-label="Close menu">
                 <X className="w-5 h-5 text-gray-400" />
               </button>
             </div>
