@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, Play, Calculator, Package, TrendingUp, Shield, Zap, BarChart3 } from "lucide-react";
+import { BRAND } from "@/lib/brand";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const HeroSection = () => {
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-8">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
                 <span className="text-xs font-semibold tracking-wider uppercase text-white/80">
-                  AI + IoT Supply Chain Intelligence
+                  {BRAND.platform.name} · {BRAND.solution.name}
                 </span>
               </div>
 
@@ -42,7 +43,7 @@ const HeroSection = () => {
               </h1>
 
               <p className="text-lg text-white/50 mb-10 leading-relaxed max-w-lg">
-                Scan barcodes, inspect quality with AI cameras, and optimize supply chain decisions — from farm gate to retail shelf.
+                {BRAND.solution.name} on the {BRAND.platform.name} platform — scan barcodes, inspect quality with AI cameras, and optimize supply chain decisions from farm gate to retail shelf.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-14">
