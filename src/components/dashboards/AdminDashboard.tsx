@@ -1,9 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
   const systemStats = [
     { label: "Total Users", value: "1,247", change: "+23 this week", color: "text-primary" },
     { label: "Active Lots", value: "3,456", change: "+156 today", color: "text-success" },
@@ -114,7 +116,7 @@ const AdminDashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-              <Button className="h-20 flex flex-col gap-2">
+              <Button className="h-20 flex flex-col gap-2" onClick={() => navigate('/silir/admin')}>
                 <span className="text-lg">👥</span>
                 <span>Manage Users</span>
               </Button>
@@ -122,15 +124,15 @@ const AdminDashboard = () => {
                 <span className="text-lg">🌾</span>
                 <span>Harvest Module</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/analytics')}>
                 <span className="text-lg">📊</span>
                 <span>Analytics</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/silir/admin')}>
                 <span className="text-lg">⚙️</span>
                 <span>System Settings</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/silir/reports')}>
                 <span className="text-lg">📋</span>
                 <span>Reports</span>
               </Button>

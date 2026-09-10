@@ -1,9 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 
 const SupervisorDashboard = () => {
+  const navigate = useNavigate();
   const farmStats = [
     { farm: "Green Valley Farm", lots: 45, quality: "A+", status: "Active", harvest: "2.1 MT" },
     { farm: "Sunrise Orchards", lots: 32, quality: "A", status: "Active", harvest: "1.8 MT" },
@@ -121,19 +123,19 @@ const SupervisorDashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <Button className="h-20 flex flex-col gap-2">
+              <Button className="h-20 flex flex-col gap-2" onClick={() => navigate('/farm-tracking')}>
                 <span className="text-lg">🌾</span>
                 <span>Farm Inspection</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/analytics')}>
                 <span className="text-lg">📊</span>
                 <span>Quality Reports</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/compliance-certification')}>
                 <span className="text-lg">📋</span>
                 <span>Compliance Check</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/alerts')}>
                 <span className="text-lg">📱</span>
                 <span>Farm Communication</span>
               </Button>

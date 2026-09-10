@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,6 +23,7 @@ import Header from "@/components/Header";
 import { useToast } from "@/hooks/use-toast";
 
 const Warehouse = () => {
+  const navigate = useNavigate();
   const [scanInput, setScanInput] = useState("");
   const { toast } = useToast();
 
@@ -306,11 +308,11 @@ const Warehouse = () => {
 
                         <div className="flex items-center gap-2">
                           {getFreshnessBadge(batch.freshness)}
-                          <Button variant="outline" size="sm">
+                          <Button variant="outline" size="sm" onClick={() => navigate(`/batch-trace?id=${batch.batchId ?? ''}`)}>
                             View Details
                           </Button>
                           {batch.fifoPosition === 1 && (
-                            <Button size="sm" className="bg-success hover:bg-success/90">
+                            <Button size="sm" className="bg-success hover:bg-success/90" onClick={() => toast({ title: "Dispatch queued", description: "Batch added to the dispatch queue." })}>
                               Dispatch
                             </Button>
                           )}
@@ -491,7 +493,7 @@ const Warehouse = () => {
                             Stored: {batch.daysStored} days
                           </span>
                           {index === 0 ? (
-                            <Button size="sm" className="bg-success hover:bg-success/90">
+                            <Button size="sm" className="bg-success hover:bg-success/90" onClick={() => toast({ title: "Dispatch queued", description: "Next FIFO batch added to the dispatch queue." })}>
                               Next Dispatch
                             </Button>
                           ) : (

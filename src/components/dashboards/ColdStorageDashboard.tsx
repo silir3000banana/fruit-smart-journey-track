@@ -1,9 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 
 const ColdStorageDashboard = () => {
+  const navigate = useNavigate();
   const chambers = [
     { id: "CH-01", temp: "12°C", humidity: "85%", capacity: "80%", status: "Optimal", lots: 25 },
     { id: "CH-02", temp: "14°C", humidity: "82%", capacity: "65%", status: "Optimal", lots: 18 },
@@ -125,19 +127,19 @@ const ColdStorageDashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <Button className="h-20 flex flex-col gap-2">
+              <Button className="h-20 flex flex-col gap-2" onClick={() => navigate('/warehouse')}>
                 <span className="text-lg">📦</span>
                 <span>Receive Lot</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/cold-storage')}>
                 <span className="text-lg">🌡️</span>
                 <span>Adjust Temperature</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/analytics')}>
                 <span className="text-lg">📊</span>
                 <span>View Reports</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/silir/dispatch')}>
                 <span className="text-lg">🚚</span>
                 <span>Dispatch Lot</span>
               </Button>

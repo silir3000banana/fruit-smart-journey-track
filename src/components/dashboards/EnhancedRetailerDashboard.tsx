@@ -1,4 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -6,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 
 const EnhancedRetailerDashboard = () => {
+  const navigate = useNavigate();
   const inventoryStats = {
     totalStock: "45.2 MT",
     availableForSale: "42.8 MT",
@@ -166,7 +168,7 @@ const EnhancedRetailerDashboard = () => {
                       }`}>
                         <div className="flex justify-between items-center">
                           <p className="text-sm font-medium">{alert.message}</p>
-                          <Button size="sm" variant="outline">
+                          <Button size="sm" variant="outline" onClick={() => navigate('/alerts')}>
                             {alert.action}
                           </Button>
                         </div>
@@ -226,8 +228,8 @@ const EnhancedRetailerDashboard = () => {
                             </p>
                           </div>
                           <div className="flex gap-2">
-                            <Button size="sm" variant="outline">Track</Button>
-                            <Button size="sm" variant="ghost">Details</Button>
+                            <Button size="sm" variant="outline" onClick={() => navigate('/batch-trace')}>Track</Button>
+                            <Button size="sm" variant="ghost" onClick={() => navigate('/batch-trace')}>Details</Button>
                           </div>
                         </div>
                       </div>
@@ -282,19 +284,19 @@ const EnhancedRetailerDashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-3">
-                    <Button className="h-16 flex flex-col gap-1">
+                    <Button className="h-16 flex flex-col gap-1" onClick={() => navigate('/warehouse')}>
                       <span className="text-lg">📦</span>
                       <span className="text-sm">New Order</span>
                     </Button>
-                    <Button variant="outline" className="h-16 flex flex-col gap-1">
+                    <Button variant="outline" className="h-16 flex flex-col gap-1" onClick={() => navigate('/silir/inventory')}>
                       <span className="text-lg">🏷️</span>
                       <span className="text-sm">Update Prices</span>
                     </Button>
-                    <Button variant="outline" className="h-16 flex flex-col gap-1">
+                    <Button variant="outline" className="h-16 flex flex-col gap-1" onClick={() => navigate('/analytics')}>
                       <span className="text-lg">📊</span>
                       <span className="text-sm">Sales Report</span>
                     </Button>
-                    <Button variant="outline" className="h-16 flex flex-col gap-1">
+                    <Button variant="outline" className="h-16 flex flex-col gap-1" onClick={() => navigate('/smart-container')}>
                       <span className="text-lg">🚚</span>
                       <span className="text-sm">Track Delivery</span>
                     </Button>
@@ -337,7 +339,7 @@ const EnhancedRetailerDashboard = () => {
                         >
                           {order.status}
                         </Badge>
-                        <Button size="sm" variant="ghost">
+                        <Button size="sm" variant="ghost" onClick={() => navigate('/silir/dispatch')}>
                           View Details
                         </Button>
                       </div>

@@ -176,10 +176,10 @@ const Profile = () => {
                 </div>
 
                 <div className="pt-4 space-y-2">
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full" onClick={handleChangePassword}>
                     Change Password
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full" onClick={handleDownloadData}>
                     Download Data
                   </Button>
                 </div>

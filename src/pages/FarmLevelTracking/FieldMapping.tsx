@@ -167,7 +167,7 @@ const FieldMapping = () => {
                             <span>{field.lastUpdated}</span>
                           </div>
                           <div className="flex gap-2 pt-2">
-                            <Button variant="outline" size="sm" className="flex-1">
+                            <Button variant="outline" size="sm" className="flex-1" onClick={() => toast({ title: "Field editing", description: "Field editing will be available in the next release." })}>
                               <Edit className="w-4 h-4 mr-2" />
                               Edit
                             </Button>

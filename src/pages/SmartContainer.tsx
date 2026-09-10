@@ -1,10 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import smartContainerImage from "@/assets/smart-container.jpg";
 
 const SmartContainer = () => {
+  const navigate = useNavigate();
   const features = [
     {
       title: "Real-time Environmental Monitoring",
@@ -262,10 +264,10 @@ const SmartContainer = () => {
             Reduce losses, improve quality, and gain complete visibility.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6">
+            <Button size="lg" className="text-lg px-8 py-6" onClick={() => navigate('/contact')}>
               Schedule Site Visit
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+            <Button variant="outline" size="lg" className="text-lg px-8 py-6" onClick={() => navigate('/contact')}>
               Speak with Expert
             </Button>
           </div>

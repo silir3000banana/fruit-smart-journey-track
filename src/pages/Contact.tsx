@@ -141,8 +141,8 @@ const Contact = () => {
                     Join 100+ agri-businesses across India already using FruitFlow AI for end-to-end traceability and quality assurance.
                   </p>
                   <div className="flex gap-3">
-                    <Button variant="outline" size="sm" className="rounded-xl">WhatsApp Us</Button>
-                    <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary-glow shadow-elegant transition-all duration-300 rounded-xl">Schedule Call</Button>
+                    <Button variant="outline" size="sm" className="rounded-xl" onClick={() => window.open("https://wa.me/919000000000", "_blank", "noopener,noreferrer")}>WhatsApp Us</Button>
+                    <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary-glow shadow-elegant transition-all duration-300 rounded-xl" onClick={() => document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" })}>Schedule Call</Button>
                   </div>
                 </CardContent>
               </Card>
