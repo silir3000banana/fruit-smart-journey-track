@@ -93,7 +93,7 @@ const HarvestModule = () => {
                   <Input id="temperature" placeholder="Current temp" />
                 </div>
               </div>
-              <Button className="w-full">Record Harvest</Button>
+              <Button className="w-full" onClick={() => navigate('/farm-tracking/harvest-entry')}>Record Harvest</Button>
             </CardContent>
           </Card>
 

@@ -168,7 +168,7 @@ const EnhancedRetailerDashboard = () => {
                       }`}>
                         <div className="flex justify-between items-center">
                           <p className="text-sm font-medium">{alert.message}</p>
-                          <Button size="sm" variant="outline">
+                          <Button size="sm" variant="outline" onClick={() => navigate('/alerts')}>
                             {alert.action}
                           </Button>
                         </div>
@@ -339,7 +339,7 @@ const EnhancedRetailerDashboard = () => {
                         >
                           {order.status}
                         </Badge>
-                        <Button size="sm" variant="ghost">
+                        <Button size="sm" variant="ghost" onClick={() => navigate('/silir/dispatch')}>
                           View Details
                         </Button>
                       </div>

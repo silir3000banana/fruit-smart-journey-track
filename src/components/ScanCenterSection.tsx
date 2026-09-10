@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "sonner";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -72,8 +73,8 @@ const ScanCenterSection = () => {
                     </div>
                   </div>
                   <div className="flex gap-3 justify-center">
-                    <Button variant="outline" size="sm" className="rounded-xl"><Printer className="w-3.5 h-3.5 mr-1.5" /> Print Label</Button>
-                    <Button variant="outline" size="sm" className="rounded-xl"><Tag className="w-3.5 h-3.5 mr-1.5" /> Attach to Crate</Button>
+                    <Button variant="outline" size="sm" className="rounded-xl" onClick={() => window.print()}><Printer className="w-3.5 h-3.5 mr-1.5" /> Print Label</Button>
+                    <Button variant="outline" size="sm" className="rounded-xl" onClick={() => toast.success("Label marked as attached to crate")}><Tag className="w-3.5 h-3.5 mr-1.5" /> Attach to Crate</Button>
                   </div>
                   <Button variant="ghost" size="sm" className="text-xs" onClick={() => setCreating(false)}>Create Another</Button>
                 </div>
@@ -120,7 +121,7 @@ const ScanCenterSection = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-2">
                     {["Move to Sorting", "Move to Ripening", "Move to Cold Storage", "Dispatch"].map((action, i) => (
-                      <Button key={i} variant="outline" size="sm" className="text-xs rounded-xl hover:border-primary/40 transition-colors duration-200">{action}</Button>
+                      <Button key={i} variant="outline" size="sm" className="text-xs rounded-xl hover:border-primary/40 transition-colors duration-200" onClick={() => toast.success(`Batch BN-245: ${action} recorded`)}>{action}</Button>
                     ))}
                   </div>
                   <Button variant="ghost" size="sm" className="w-full text-xs" onClick={() => setScanned(false)}>Scan Another</Button>

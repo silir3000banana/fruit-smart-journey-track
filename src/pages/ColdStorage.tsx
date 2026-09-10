@@ -1,10 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import coldStorageImage from "@/assets/cold-storage.jpg";
 
 const ColdStorage = () => {
+  const navigate = useNavigate();
   const features = [
     {
       title: "Multi-Zone Temperature Control",
@@ -203,7 +205,7 @@ const ColdStorage = () => {
                       <span className="font-medium text-primary">{capacity.investment}</span>
                     </div>
                   </div>
-                  <Button variant="outline" className="w-full mt-4">
+                  <Button variant="outline" className="w-full mt-4" onClick={() => navigate('/contact')}>
                     Get Quote
                   </Button>
                 </CardContent>
