@@ -1,9 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 
 const FarmerDashboard = () => {
+  const navigate = useNavigate();
   const stats = [
     { label: "Active Lots", value: "12", change: "+2 this week", color: "text-primary" },
     { label: "Total Harvest", value: "2.5 MT", change: "+0.3 MT this week", color: "text-success" },
@@ -55,19 +57,19 @@ const FarmerDashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <Button className="h-20 flex flex-col gap-2">
+              <Button className="h-20 flex flex-col gap-2" onClick={() => navigate('/farm-tracking/harvest-entry')}>
                 <span className="text-lg">🌾</span>
                 <span>New Harvest Entry</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/location-scanning')}>
                 <span className="text-lg">📱</span>
                 <span>Scan QR Code</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/cold-storage')}>
                 <span className="text-lg">🏠</span>
                 <span>Cold Storage</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/analytics')}>
                 <span className="text-lg">📊</span>
                 <span>View Reports</span>
               </Button>

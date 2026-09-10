@@ -1,9 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 
 const RetailerDashboard = () => {
+  const navigate = useNavigate();
   const incomingLots = [
     { id: "BN-789", variety: "Cavendish", quantity: "500 kg", eta: "2 hours", quality: "A+", supplier: "Green Valley" },
     { id: "BN-890", variety: "Robusta", quantity: "300 kg", eta: "Tomorrow", quality: "A", supplier: "Sunrise Orchards" },
@@ -128,19 +130,19 @@ const RetailerDashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <Button className="h-20 flex flex-col gap-2">
+              <Button className="h-20 flex flex-col gap-2" onClick={() => navigate('/warehouse')}>
                 <span className="text-lg">📦</span>
                 <span>Receive Shipment</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/location-scanning')}>
                 <span className="text-lg">📱</span>
                 <span>Scan QR Code</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/analytics')}>
                 <span className="text-lg">📊</span>
                 <span>Sales Reports</span>
               </Button>
-              <Button variant="outline" className="h-20 flex flex-col gap-2">
+              <Button variant="outline" className="h-20 flex flex-col gap-2" onClick={() => navigate('/batch-trace')}>
                 <span className="text-lg">🔍</span>
                 <span>Trace Origin</span>
               </Button>
