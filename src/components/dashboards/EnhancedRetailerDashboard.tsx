@@ -228,8 +228,8 @@ const EnhancedRetailerDashboard = () => {
                             </p>
                           </div>
                           <div className="flex gap-2">
-                            <Button size="sm" variant="outline">Track</Button>
-                            <Button size="sm" variant="ghost">Details</Button>
+                            <Button size="sm" variant="outline" onClick={() => navigate('/batch-trace')}>Track</Button>
+                            <Button size="sm" variant="ghost" onClick={() => navigate('/batch-trace')}>Details</Button>
                           </div>
                         </div>
                       </div>

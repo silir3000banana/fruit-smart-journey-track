@@ -1,4 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -7,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Header from "@/components/Header";
 
 const HarvestModule = () => {
+  const navigate = useNavigate();
   const harvestStats = [
     { label: "Today's Harvest", value: "850 kg", change: "+15% vs yesterday", color: "text-success" },
     { label: "Active Fields", value: "8", change: "2 ready for harvest", color: "text-primary" },
@@ -163,7 +165,7 @@ const HarvestModule = () => {
                       <td className="p-2">{harvest.timestamp}</td>
                       <td className="p-2">{harvest.temperature}</td>
                       <td className="p-2">
-                        <Button variant="ghost" size="sm">Generate QR</Button>
+                        <Button variant="ghost" size="sm" onClick={() => navigate('/farm-tracking/qr-generation')}>Generate QR</Button>
                       </td>
                     </tr>
                   ))}

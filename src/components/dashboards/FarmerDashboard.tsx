@@ -107,7 +107,7 @@ const FarmerDashboard = () => {
                       </td>
                       <td className="p-2">{harvest.temperature}</td>
                       <td className="p-2">
-                        <Button variant="ghost" size="sm">Edit</Button>
+                        <Button variant="ghost" size="sm" onClick={() => navigate('/farm-tracking/harvest-entry')}>Edit</Button>
                       </td>
                     </tr>
                   ))}
@@ -149,7 +149,7 @@ const FarmerDashboard = () => {
                         <Badge variant="premium">{lot.qr}</Badge>
                       </td>
                       <td className="p-2">
-                        <Button variant="ghost" size="sm">Track</Button>
+                        <Button variant="ghost" size="sm" onClick={() => navigate('/batch-trace')}>Track</Button>
                       </td>
                     </tr>
                   ))}
