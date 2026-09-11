@@ -93,10 +93,10 @@ const SmartContainer = () => {
                 GPS tracking, and automated climate control for perfect fruit preservation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-6">
+                <Button size="lg" className="text-lg px-8 py-6" onClick={() => navigate('/contact')}>
                   Request Demo
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6" onClick={() => navigate('/contact')}>
                   Download Brochure
                 </Button>
               </div>
@@ -245,6 +245,7 @@ const SmartContainer = () => {
                   <Button 
                     className="w-full" 
                     variant={plan.popular ? "default" : "outline"}
+                    onClick={() => navigate('/contact')}
                   >
                     Get Started
                   </Button>

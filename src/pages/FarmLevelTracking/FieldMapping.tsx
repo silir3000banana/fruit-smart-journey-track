@@ -171,7 +171,7 @@ const FieldMapping = () => {
                               <Edit className="w-4 h-4 mr-2" />
                               Edit
                             </Button>
-                            <Button variant="outline" size="sm">
+                            <Button variant="outline" size="sm" aria-label="Remove field" onClick={() => toast({ title: "Field removal", description: "Field removal will be available in the next release." })}>
                               <Trash2 className="w-4 h-4" />
                             </Button>
                           </div>
