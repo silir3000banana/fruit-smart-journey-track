@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BRAND } from "@/lib/brand";
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -37,7 +38,7 @@ const Contact = () => {
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Get Started with
-              <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent block mt-2">FruitFlow AI Platform</span>
+              <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent block mt-2">{BRAND.platform.name} Platform</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Transform your post-harvest operations with India's most advanced traceability and quality assurance platform.
@@ -138,7 +139,7 @@ const Contact = () => {
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-foreground mb-3">🚀 Ready to Transform Your Operations?</h3>
                   <p className="text-muted-foreground text-sm mb-4">
-                    Join 100+ agri-businesses across India already using FruitFlow AI for end-to-end traceability and quality assurance.
+                    Join 100+ agri-businesses across India already using SILIR3000 for end-to-end traceability and quality assurance.
                   </p>
                   <div className="flex gap-3">
                     <Button variant="outline" size="sm" className="rounded-xl" onClick={() => window.open("https://wa.me/919000000000", "_blank", "noopener,noreferrer")}>WhatsApp Us</Button>
