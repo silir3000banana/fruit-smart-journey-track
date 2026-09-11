@@ -5,17 +5,54 @@ import {
   NavigationMenu, NavigationMenuContent, NavigationMenuItem,
   NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import { 
   Leaf, QrCode, Truck, Warehouse, BarChart3, Bell,
-  ThermometerSnowflake, Package, Cpu, Store
+  ThermometerSnowflake, Package, Cpu, Store, Menu
 } from "lucide-react";
 import { BRAND } from "@/lib/brand";
+
+const mobileGroups = [
+  {
+    label: "Traceability",
+    links: [
+      { href: "/batch-trace", title: "Trace Batch" },
+      { href: "/know-your-fruit", title: "Know Your Fruit" },
+      { href: "/farm-tracking", title: "Farm Tracking" },
+      { href: "/packing-logistics", title: "Post-Harvest" },
+    ],
+  },
+  {
+    label: "Operations",
+    links: [
+      { href: "/cold-storage", title: "Ripening & Storage" },
+      { href: "/smart-container", title: "Cold Chain Transport" },
+      { href: "/warehouse", title: "Warehouse" },
+      { href: "/ai-grading", title: "AI Quality Grading" },
+    ],
+  },
+  {
+    label: "Insights",
+    links: [
+      { href: "/analytics", title: "Analytics" },
+      { href: "/alerts", title: "Alerts" },
+    ],
+  },
+];
 
 const Header = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const go = (path: string) => {
+    setMobileOpen(false);
+    navigate(path);
+  };
+
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-2xl border-b border-border/40">
@@ -99,21 +136,67 @@ const Header = () => {
           <div className="flex items-center space-x-2">
             {user ? (
               <>
-                <Button variant="ghost" size="sm" className="hover:text-primary transition-colors duration-200" onClick={() => navigate('/batch-trace')}>
+                <Button variant="ghost" size="sm" className="hidden sm:inline-flex hover:text-primary transition-colors duration-200" onClick={() => navigate('/batch-trace')}>
                   <QrCode className="w-4 h-4 mr-1" />Trace
                 </Button>
-                <Button variant="ghost" size="sm" className="hover:text-primary transition-colors duration-200" onClick={() => navigate('/silir')}>Dashboard</Button>
+                <Button variant="ghost" size="sm" className="hidden sm:inline-flex hover:text-primary transition-colors duration-200" onClick={() => navigate('/silir')}>Dashboard</Button>
                 <Button variant="outline" size="sm" className="hover:border-primary/40 transition-all duration-200" onClick={async () => { await signOut(); navigate('/'); }}>Sign Out</Button>
               </>
             ) : (
               <>
-                <Button variant="ghost" size="sm" className="hover:text-primary transition-colors duration-200" onClick={() => navigate('/know-your-fruit')}>
+                <Button variant="ghost" size="sm" className="hidden sm:inline-flex hover:text-primary transition-colors duration-200" onClick={() => navigate('/know-your-fruit')}>
                   <QrCode className="w-4 h-4 mr-1" />Know Your Fruit
                 </Button>
                 <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary-glow shadow-elegant hover:shadow-glow transition-all duration-300" onClick={() => navigate('/auth')}>Sign In</Button>
               </>
             )}
+
+            {/* Mobile menu */}
+            <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="lg:hidden min-h-11 min-w-11" aria-label="Open menu">
+                  <Menu className="w-5 h-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[86vw] max-w-sm overflow-y-auto">
+                <SheetTitle className="text-left text-base">{BRAND.platform.name}</SheetTitle>
+                <Accordion type="multiple" className="mt-4">
+                  {mobileGroups.map((group) => (
+                    <AccordionItem key={group.label} value={group.label}>
+                      <AccordionTrigger className="text-sm">{group.label}</AccordionTrigger>
+                      <AccordionContent>
+                        <div className="flex flex-col">
+                          {group.links.map((l) => (
+                            <button
+                              key={l.href}
+                              type="button"
+                              onClick={() => go(l.href)}
+                              className="text-left text-sm py-3 px-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                            >
+                              {l.title}
+                            </button>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+                <div className="mt-4 flex flex-col gap-1 border-t border-border/40 pt-4">
+                  <button type="button" onClick={() => go('/pricing')} className="text-left text-sm py-3 px-2 rounded-lg hover:bg-accent transition-colors">Pricing</button>
+                  <button type="button" onClick={() => go('/contact')} className="text-left text-sm py-3 px-2 rounded-lg hover:bg-accent transition-colors">Contact</button>
+                  {user ? (
+                    <>
+                      <button type="button" onClick={() => go('/silir')} className="text-left text-sm py-3 px-2 rounded-lg hover:bg-accent transition-colors">Dashboard</button>
+                      <button type="button" onClick={() => go('/batch-trace')} className="text-left text-sm py-3 px-2 rounded-lg hover:bg-accent transition-colors">Trace a Batch</button>
+                    </>
+                  ) : (
+                    <button type="button" onClick={() => go('/auth')} className="text-left text-sm py-3 px-2 rounded-lg hover:bg-accent transition-colors">Sign In</button>
+                  )}
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
+
         </div>
       </div>
     </header>

@@ -191,7 +191,7 @@ const Pricing = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-foreground mb-4">Ready to Transform Your Value Chain?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join the agricultural revolution. Schedule a demo to see how FruitFlow AI can increase your profits and reduce waste.
+              Join the agricultural revolution. Schedule a demo to see how SILIR3000 can increase your profits and reduce waste.
             </p>
             <div className="flex justify-center gap-4 flex-wrap">
               <Button size="lg" className="px-8 bg-primary text-primary-foreground hover:bg-primary-glow shadow-elegant hover:shadow-glow transition-all duration-300 rounded-xl" onClick={() => window.location.href = '/contact'}>Schedule Free Demo</Button>

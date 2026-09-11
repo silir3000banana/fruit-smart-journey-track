@@ -308,7 +308,7 @@ const Warehouse = () => {
 
                         <div className="flex items-center gap-2">
                           {getFreshnessBadge(batch.freshness)}
-                          <Button variant="outline" size="sm" onClick={() => navigate(`/batch-trace?id=${batch.batchId ?? ''}`)}>
+                          <Button variant="outline" size="sm" onClick={() => navigate(`/batch-trace?id=${batch.id}`)}>
                             View Details
                           </Button>
                           {batch.fifoPosition === 1 && (

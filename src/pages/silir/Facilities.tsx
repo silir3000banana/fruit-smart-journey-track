@@ -150,10 +150,10 @@ export default function Facilities() {
                   </Button>
                 ) : (
                   <>
-                    <Button size="sm" variant="outline" className="flex-1 text-xs">
+                    <Button size="sm" variant="outline" className="flex-1 text-xs" onClick={() => toast.success("Chamber setpoint adjustment requested")}>
                       <Settings className="w-3.5 h-3.5 mr-1" /> Adjust
                     </Button>
-                    <Button size="sm" variant="outline" className="flex-1 text-xs">
+                    <Button size="sm" variant="outline" className="flex-1 text-xs" onClick={() => toast.success("Ventilation cycle triggered")}>
                       <Fan className="w-3.5 h-3.5 mr-1" /> Ventilation
                     </Button>
                   </>

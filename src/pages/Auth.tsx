@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BRAND } from "@/lib/brand";
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,7 +44,7 @@ const Auth = () => {
         title: "Welcome back!",
         description: "You have successfully signed in.",
       });
-      navigate('/');
+      navigate('/dashboard');
     }
 
     setLoading(false);
@@ -68,7 +69,7 @@ const Auth = () => {
       });
     } else {
       toast({
-        title: "Welcome to SmartHarvest!",
+        title: `Welcome to ${BRAND.platform.name}!`,
         description: "Please check your email to verify your account.",
       });
     }
@@ -85,7 +86,7 @@ const Auth = () => {
               <span className="text-primary-foreground font-bold text-xl">S</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">SmartHarvest</h1>
+              <h1 className="text-2xl font-bold text-foreground">{BRAND.platform.name}</h1>
               <p className="text-sm text-muted-foreground">Value Chain Platform</p>
             </div>
           </div>
@@ -102,7 +103,7 @@ const Auth = () => {
               <CardHeader>
                 <CardTitle>Sign In</CardTitle>
                 <CardDescription>
-                  Access your SmartHarvest dashboard
+                  Access your {BRAND.platform.name} dashboard
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -145,7 +146,7 @@ const Auth = () => {
               <CardHeader>
                 <CardTitle>Create Account</CardTitle>
                 <CardDescription>
-                  Join SmartHarvest platform for smart agriculture
+                  Join {BRAND.platform.name} — {BRAND.solution.name}
                 </CardDescription>
               </CardHeader>
               <CardContent>

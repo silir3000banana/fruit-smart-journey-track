@@ -247,6 +247,18 @@ const BatchTrace = () => {
     setStageModalOpen(true);
   };
 
+  const handleExport = () => {
+    if (!selectedBatch) return;
+    const blob = new Blob([JSON.stringify(selectedBatch, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${selectedBatch.batchId}-traceability.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast({ title: "Report exported", description: `${selectedBatch.batchId} traceability report downloaded.` });
+  };
+
   const handleShare = () => {
     const url = `${window.location.origin}/batch-trace?id=${selectedBatch?.batchId}`;
     navigator.clipboard.writeText(url);
@@ -331,7 +343,7 @@ const BatchTrace = () => {
                       <Share2 className="w-4 h-4 mr-2" />
                       Share
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" onClick={handleExport}>
                       <Download className="w-4 h-4 mr-2" />
                       Export
                     </Button>

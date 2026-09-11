@@ -183,7 +183,7 @@ const LotManagement = () => {
                           <Button variant="outline" size="sm" aria-label="View lot" onClick={() => navigate('/batch-trace')}>
                             <Eye className="w-4 h-4" />
                           </Button>
-                          <Button variant="outline" size="sm">
+                          <Button variant="outline" size="sm" aria-label="Edit lot" onClick={() => navigate('/farm-tracking/harvest-entry')}>
                             <Edit className="w-4 h-4" />
                           </Button>
                         </div>
