@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -93,6 +94,15 @@ const MiniChart = ({ data, color }: { data: number[]; color: string }) => {
 const FruitJourney = () => {
   const { batchId } = useParams();
   const navigate = useNavigate();
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    if (navigator.share) {
+      try { await navigator.share({ title: "Know Your Fruit", url }); return; } catch { /* fall through to copy */ }
+    }
+    await navigator.clipboard.writeText(url);
+    toast.success("Link copied — share this fruit story with anyone");
+  };
   const data = getMockData(batchId || "FRUIT-2026-TN-000145");
   const fc = freshnessColor(data.freshness.score);
 
@@ -328,7 +338,7 @@ const FruitJourney = () => {
 
         {/* Share */}
         <div className="text-center pb-4">
-          <Button variant="outline" size="sm" className="gap-1.5 text-xs">
+          <Button variant="outline" size="sm" className="gap-1.5 text-xs" onClick={handleShare}>
             <Share2 className="w-3.5 h-3.5" /> Share Fruit Story
           </Button>
         </div>

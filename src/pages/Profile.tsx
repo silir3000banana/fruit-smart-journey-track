@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import Header from "@/components/Header";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Profile = () => {
   const { user, profile, updateProfile } = useAuth();
@@ -41,6 +42,27 @@ const Profile = () => {
     }
 
     setLoading(false);
+  };
+
+  const handleChangePassword = async () => {
+    if (!user?.email) return;
+    const { error } = await supabase.auth.resetPasswordForEmail(user.email, {
+      redirectTo: `${window.location.origin}/auth`,
+    });
+    toast(error
+      ? { title: "Could not send reset link", description: error.message, variant: "destructive" }
+      : { title: "Reset link sent", description: `Check ${user.email} to set a new password.` });
+  };
+
+  const handleDownloadData = () => {
+    const blob = new Blob([JSON.stringify({ email: user?.email, ...profile }, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "silir3000-my-data.json";
+    a.click();
+    URL.revokeObjectURL(url);
+    toast({ title: "Data downloaded", description: "Your profile data has been saved to your device." });
   };
 
   if (!user || !profile) {
