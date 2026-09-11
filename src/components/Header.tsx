@@ -5,17 +5,54 @@ import {
   NavigationMenu, NavigationMenuContent, NavigationMenuItem,
   NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import { 
   Leaf, QrCode, Truck, Warehouse, BarChart3, Bell,
-  ThermometerSnowflake, Package, Cpu, Store
+  ThermometerSnowflake, Package, Cpu, Store, Menu
 } from "lucide-react";
 import { BRAND } from "@/lib/brand";
+
+const mobileGroups = [
+  {
+    label: "Traceability",
+    links: [
+      { href: "/batch-trace", title: "Trace Batch" },
+      { href: "/know-your-fruit", title: "Know Your Fruit" },
+      { href: "/farm-tracking", title: "Farm Tracking" },
+      { href: "/packing-logistics", title: "Post-Harvest" },
+    ],
+  },
+  {
+    label: "Operations",
+    links: [
+      { href: "/cold-storage", title: "Ripening & Storage" },
+      { href: "/smart-container", title: "Cold Chain Transport" },
+      { href: "/warehouse", title: "Warehouse" },
+      { href: "/ai-grading", title: "AI Quality Grading" },
+    ],
+  },
+  {
+    label: "Insights",
+    links: [
+      { href: "/analytics", title: "Analytics" },
+      { href: "/alerts", title: "Alerts" },
+    ],
+  },
+];
 
 const Header = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const go = (path: string) => {
+    setMobileOpen(false);
+    navigate(path);
+  };
+
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-2xl border-b border-border/40">
