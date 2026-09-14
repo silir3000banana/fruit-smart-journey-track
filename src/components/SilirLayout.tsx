@@ -132,7 +132,7 @@ export default function SilirLayout({ children }: SilirLayoutProps) {
       )}
 
       {/* Main content area */}
-      <div className={cn("flex-1 flex flex-col transition-all duration-300", sidebarOpen ? "lg:ml-60" : "lg:ml-16")}>
+      <div className={cn("flex-1 min-w-0 flex flex-col transition-all duration-300", sidebarOpen ? "lg:ml-60" : "lg:ml-16")}>
         {/* Top bar */}
         <header className="h-14 bg-white border-b border-gray-200 flex items-center px-4 gap-3 sticky top-0 z-30">
           <button className="lg:hidden" onClick={() => setMobileOpen(true)}>
