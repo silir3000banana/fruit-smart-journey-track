@@ -75,6 +75,7 @@ const App = () => (
 
             {/* Silir SaaS prototype routes */}
             <Route path="/silir" element={<SilirPage><SilirDashboard /></SilirPage>} />
+            <Route path="/silir/ai" element={<SilirPage><AICommandCenter /></SilirPage>} />
             <Route path="/silir/operations" element={<SilirPage><Operations /></SilirPage>} />
             <Route path="/silir/facilities" element={<SilirPage><Facilities /></SilirPage>} />
             <Route path="/silir/quality-ai" element={<SilirPage><QualityAI /></SilirPage>} />
