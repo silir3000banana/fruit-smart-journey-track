@@ -161,6 +161,8 @@ export default function SilirLayout({ children }: SilirLayoutProps) {
 
           <div className="flex-1" />
 
+          <AiCommandBar />
+
           {/* Right side */}
           <button className="relative p-2 text-gray-500 hover:text-gray-700">
             <Bell className="w-5 h-5" />
