@@ -4,14 +4,16 @@ import { useAuth } from "@/contexts/AuthContext";
 import {
   LayoutDashboard, Settings2, Factory, Cpu, Package, Truck,
   QrCode, BarChart3, ShieldCheck, Bell, Search, ChevronDown,
-  Menu, X, LogOut, User
+  Menu, X, LogOut, User, Brain
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import AiCommandBar from "@/features/ai/AiCommandBar";
 
 const navItems = [
   { title: "Dashboard", url: "/silir", icon: LayoutDashboard },
+  { title: "AI Command Center", url: "/silir/ai", icon: Brain },
   { title: "Operations", url: "/silir/operations", icon: Settings2 },
   { title: "Facilities", url: "/silir/facilities", icon: Factory },
   { title: "Quality AI", url: "/silir/quality-ai", icon: Cpu },
@@ -158,6 +160,8 @@ export default function SilirLayout({ children }: SilirLayoutProps) {
           </div>
 
           <div className="flex-1" />
+
+          <AiCommandBar />
 
           {/* Right side */}
           <button className="relative p-2 text-gray-500 hover:text-gray-700">
