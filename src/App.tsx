@@ -45,6 +45,7 @@ import Dispatch from "./pages/silir/Dispatch";
 import Traceability from "./pages/silir/Traceability";
 import Reports from "./pages/silir/Reports";
 import SilirAdmin from "./pages/silir/SilirAdmin";
+import AICommandCenter from "./pages/silir/AICommandCenter";
 
 const queryClient = new QueryClient();
 
