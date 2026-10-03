@@ -681,6 +681,13 @@ export type Database = {
         | "quality_manager"
         | "admin"
         | "consumer"
+        | "super_admin"
+        | "farm_admin"
+        | "packhouse_operator"
+        | "storage_operator"
+        | "warehouse_operator"
+        | "retailer"
+        | "auditor"
       batch_stage:
         | "harvest"
         | "post_harvest"
@@ -825,6 +832,13 @@ export const Constants = {
         "quality_manager",
         "admin",
         "consumer",
+        "super_admin",
+        "farm_admin",
+        "packhouse_operator",
+        "storage_operator",
+        "warehouse_operator",
+        "retailer",
+        "auditor",
       ],
       batch_stage: [
         "harvest",
