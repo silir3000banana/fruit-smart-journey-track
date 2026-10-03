@@ -67,6 +67,53 @@ export type Database = {
           },
         ]
       }
+      audit_logs: {
+        Row: {
+          action: string
+          batch_code: string | null
+          batch_id: string | null
+          created_at: string
+          id: string
+          metadata: Json | null
+          new_state: Json | null
+          previous_state: Json | null
+          user_id: string | null
+          user_name: string | null
+        }
+        Insert: {
+          action: string
+          batch_code?: string | null
+          batch_id?: string | null
+          created_at?: string
+          id?: string
+          metadata?: Json | null
+          new_state?: Json | null
+          previous_state?: Json | null
+          user_id?: string | null
+          user_name?: string | null
+        }
+        Update: {
+          action?: string
+          batch_code?: string | null
+          batch_id?: string | null
+          created_at?: string
+          id?: string
+          metadata?: Json | null
+          new_state?: Json | null
+          previous_state?: Json | null
+          user_id?: string | null
+          user_name?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audit_logs_batch_id_fkey"
+            columns: ["batch_id"]
+            isOneToOne: false
+            referencedRelation: "batches"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       batch_stage_logs: {
         Row: {
           batch_id: string
@@ -136,42 +183,57 @@ export type Database = {
         Row: {
           batch_id: string
           created_at: string
+          created_by: string | null
           current_quantity_kg: number
           current_stage: Database["public"]["Enums"]["batch_stage"]
+          current_status: string | null
           farm_id: string | null
+          harvest_id: string | null
           id: string
           is_active: boolean | null
+          is_demo: boolean
           product_type: string
           quality_grade: string | null
           total_quantity_kg: number
+          trace_stage: Database["public"]["Enums"]["trace_stage"] | null
           updated_at: string
           variety: string
         }
         Insert: {
           batch_id: string
           created_at?: string
+          created_by?: string | null
           current_quantity_kg: number
           current_stage?: Database["public"]["Enums"]["batch_stage"]
+          current_status?: string | null
           farm_id?: string | null
+          harvest_id?: string | null
           id?: string
           is_active?: boolean | null
+          is_demo?: boolean
           product_type?: string
           quality_grade?: string | null
           total_quantity_kg: number
+          trace_stage?: Database["public"]["Enums"]["trace_stage"] | null
           updated_at?: string
           variety: string
         }
         Update: {
           batch_id?: string
           created_at?: string
+          created_by?: string | null
           current_quantity_kg?: number
           current_stage?: Database["public"]["Enums"]["batch_stage"]
+          current_status?: string | null
           farm_id?: string | null
+          harvest_id?: string | null
           id?: string
           is_active?: boolean | null
+          is_demo?: boolean
           product_type?: string
           quality_grade?: string | null
           total_quantity_kg?: number
+          trace_stage?: Database["public"]["Enums"]["trace_stage"] | null
           updated_at?: string
           variety?: string
         }
@@ -183,45 +245,76 @@ export type Database = {
             referencedRelation: "farms"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "batches_harvest_id_fkey"
+            columns: ["harvest_id"]
+            isOneToOne: false
+            referencedRelation: "harvest_records"
+            referencedColumns: ["id"]
+          },
         ]
       }
       farms: {
         Row: {
           acreage: number | null
+          certification_status: string | null
           certifications: string[] | null
+          contact: string | null
           created_at: string
           crop_types: string[] | null
+          cultivation_method: string | null
+          district: string | null
           farm_name: string
+          farmer_name: string | null
           geo_lat: number | null
           geo_lng: number | null
           id: string
+          is_demo: boolean
           location: string
+          state: string | null
+          status: string | null
           updated_at: string
           user_id: string
         }
         Insert: {
           acreage?: number | null
+          certification_status?: string | null
           certifications?: string[] | null
+          contact?: string | null
           created_at?: string
           crop_types?: string[] | null
+          cultivation_method?: string | null
+          district?: string | null
           farm_name: string
+          farmer_name?: string | null
           geo_lat?: number | null
           geo_lng?: number | null
           id?: string
+          is_demo?: boolean
           location: string
+          state?: string | null
+          status?: string | null
           updated_at?: string
           user_id: string
         }
         Update: {
           acreage?: number | null
+          certification_status?: string | null
           certifications?: string[] | null
+          contact?: string | null
           created_at?: string
           crop_types?: string[] | null
+          cultivation_method?: string | null
+          district?: string | null
           farm_name?: string
+          farmer_name?: string | null
           geo_lat?: number | null
           geo_lng?: number | null
           id?: string
+          is_demo?: boolean
           location?: string
+          state?: string | null
+          status?: string | null
           updated_at?: string
           user_id?: string
         }
@@ -229,46 +322,64 @@ export type Database = {
       }
       harvest_records: {
         Row: {
-          batch_id: string
+          batch_id: string | null
           created_at: string
+          crop: string | null
           farm_id: string
           farmer_user_id: string
           field_id: string | null
+          grade: string | null
           harvest_date: string
           id: string
           initial_quality_score: number | null
+          is_demo: boolean
           moisture_content: number | null
           notes: string | null
+          operator: string | null
           quantity_kg: number
           temperature_celsius: number | null
+          unit: string | null
+          variety: string | null
         }
         Insert: {
-          batch_id: string
+          batch_id?: string | null
           created_at?: string
+          crop?: string | null
           farm_id: string
           farmer_user_id: string
           field_id?: string | null
+          grade?: string | null
           harvest_date: string
           id?: string
           initial_quality_score?: number | null
+          is_demo?: boolean
           moisture_content?: number | null
           notes?: string | null
+          operator?: string | null
           quantity_kg: number
           temperature_celsius?: number | null
+          unit?: string | null
+          variety?: string | null
         }
         Update: {
-          batch_id?: string
+          batch_id?: string | null
           created_at?: string
+          crop?: string | null
           farm_id?: string
           farmer_user_id?: string
           field_id?: string | null
+          grade?: string | null
           harvest_date?: string
           id?: string
           initial_quality_score?: number | null
+          is_demo?: boolean
           moisture_content?: number | null
           notes?: string | null
+          operator?: string | null
           quantity_kg?: number
           temperature_celsius?: number | null
+          unit?: string | null
+          variety?: string | null
         }
         Relationships: [
           {
@@ -378,6 +489,81 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      quality_records: {
+        Row: {
+          appearance: string | null
+          batch_id: string
+          created_at: string
+          created_by: string | null
+          defects: string | null
+          event_id: string | null
+          evidence_url: string | null
+          grade: string | null
+          id: string
+          inspection_date: string
+          inspector: string | null
+          moisture: number | null
+          quality_status: string
+          remarks: string | null
+          size: string | null
+          temperature: number | null
+          weight: number | null
+        }
+        Insert: {
+          appearance?: string | null
+          batch_id: string
+          created_at?: string
+          created_by?: string | null
+          defects?: string | null
+          event_id?: string | null
+          evidence_url?: string | null
+          grade?: string | null
+          id?: string
+          inspection_date?: string
+          inspector?: string | null
+          moisture?: number | null
+          quality_status: string
+          remarks?: string | null
+          size?: string | null
+          temperature?: number | null
+          weight?: number | null
+        }
+        Update: {
+          appearance?: string | null
+          batch_id?: string
+          created_at?: string
+          created_by?: string | null
+          defects?: string | null
+          event_id?: string | null
+          evidence_url?: string | null
+          grade?: string | null
+          id?: string
+          inspection_date?: string
+          inspector?: string | null
+          moisture?: number | null
+          quality_status?: string
+          remarks?: string | null
+          size?: string | null
+          temperature?: number | null
+          weight?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quality_records_batch_id_fkey"
+            columns: ["batch_id"]
+            isOneToOne: false
+            referencedRelation: "batches"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quality_records_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "traceability_events"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       retail_records: {
         Row: {
@@ -496,6 +682,86 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "ripening_records_batch_id_fkey"
+            columns: ["batch_id"]
+            isOneToOne: false
+            referencedRelation: "batches"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      traceability_events: {
+        Row: {
+          action: string
+          actor_id: string | null
+          actor_name: string | null
+          actor_role: string | null
+          batch_id: string
+          created_at: string
+          details: Json
+          event_time: string
+          evidence_url: string | null
+          id: string
+          location: string | null
+          loss_quantity: number | null
+          loss_reason: string | null
+          organization_id: string | null
+          previous_quantity: number | null
+          quantity: number | null
+          remarks: string | null
+          stage: Database["public"]["Enums"]["trace_stage"]
+          status: string | null
+          unit: string
+          updated_at: string
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          actor_name?: string | null
+          actor_role?: string | null
+          batch_id: string
+          created_at?: string
+          details?: Json
+          event_time?: string
+          evidence_url?: string | null
+          id?: string
+          location?: string | null
+          loss_quantity?: number | null
+          loss_reason?: string | null
+          organization_id?: string | null
+          previous_quantity?: number | null
+          quantity?: number | null
+          remarks?: string | null
+          stage: Database["public"]["Enums"]["trace_stage"]
+          status?: string | null
+          unit?: string
+          updated_at?: string
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          actor_name?: string | null
+          actor_role?: string | null
+          batch_id?: string
+          created_at?: string
+          details?: Json
+          event_time?: string
+          evidence_url?: string | null
+          id?: string
+          location?: string | null
+          loss_quantity?: number | null
+          loss_reason?: string | null
+          organization_id?: string | null
+          previous_quantity?: number | null
+          quantity?: number | null
+          remarks?: string | null
+          stage?: Database["public"]["Enums"]["trace_stage"]
+          status?: string | null
+          unit?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "traceability_events_batch_id_fkey"
             columns: ["batch_id"]
             isOneToOne: false
             referencedRelation: "batches"
@@ -662,12 +928,34 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      actor_name: { Args: { _uid: string }; Returns: string }
+      can_update_stage: {
+        Args: {
+          _stage: Database["public"]["Enums"]["trace_stage"]
+          _uid: string
+        }
+        Returns: boolean
+      }
+      get_public_trace: { Args: { p_code: string }; Returns: Json }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
         }
         Returns: boolean
+      }
+      is_internal_user: { Args: { _uid: string }; Returns: boolean }
+      is_trace_admin: { Args: { _uid: string }; Returns: boolean }
+      trace_create_batch: { Args: { p: Json }; Returns: string }
+      trace_create_farm: { Args: { p: Json }; Returns: string }
+      trace_create_harvest: { Args: { p: Json }; Returns: string }
+      trace_record_event: {
+        Args: {
+          p: Json
+          p_batch_code: string
+          p_stage: Database["public"]["Enums"]["trace_stage"]
+        }
+        Returns: string
       }
     }
     Enums: {
@@ -695,6 +983,19 @@ export type Database = {
         | "transport"
         | "warehouse"
         | "retail"
+      trace_stage:
+        | "FARM"
+        | "HARVEST"
+        | "COLLECTION"
+        | "POST_HARVEST"
+        | "QUALITY_CHECK"
+        | "RIPENING"
+        | "STORAGE"
+        | "TRANSPORT"
+        | "WAREHOUSE"
+        | "DISTRIBUTION"
+        | "RETAIL"
+        | "CONSUMER"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -847,6 +1148,20 @@ export const Constants = {
         "transport",
         "warehouse",
         "retail",
+      ],
+      trace_stage: [
+        "FARM",
+        "HARVEST",
+        "COLLECTION",
+        "POST_HARVEST",
+        "QUALITY_CHECK",
+        "RIPENING",
+        "STORAGE",
+        "TRANSPORT",
+        "WAREHOUSE",
+        "DISTRIBUTION",
+        "RETAIL",
+        "CONSUMER",
       ],
     },
   },
