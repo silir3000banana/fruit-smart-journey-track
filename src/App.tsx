@@ -42,10 +42,12 @@ import Facilities from "./pages/silir/Facilities";
 import QualityAI from "./pages/silir/QualityAI";
 import Inventory from "./pages/silir/Inventory";
 import Dispatch from "./pages/silir/Dispatch";
-import Traceability from "./pages/silir/Traceability";
 import Reports from "./pages/silir/Reports";
 import SilirAdmin from "./pages/silir/SilirAdmin";
 import AICommandCenter from "./pages/silir/AICommandCenter";
+import BatchHub from "./pages/silir/BatchHub";
+import BatchJourney from "./pages/silir/BatchJourney";
+import PublicTrace from "./pages/PublicTrace";
 
 const queryClient = new QueryClient();
 
@@ -81,7 +83,9 @@ const App = () => (
             <Route path="/silir/quality-ai" element={<SilirPage><QualityAI /></SilirPage>} />
             <Route path="/silir/inventory" element={<SilirPage><Inventory /></SilirPage>} />
             <Route path="/silir/dispatch" element={<SilirPage><Dispatch /></SilirPage>} />
-            <Route path="/silir/traceability" element={<SilirPage><Traceability /></SilirPage>} />
+            <Route path="/silir/traceability" element={<SilirPage><BatchHub /></SilirPage>} />
+            <Route path="/batch/:batchCode" element={<SilirPage><BatchJourney /></SilirPage>} />
+            <Route path="/trace/:batchCode" element={<PublicTrace />} />
             <Route path="/silir/reports" element={<SilirPage><Reports /></SilirPage>} />
             <Route path="/silir/admin" element={<SilirPage><SilirAdmin /></SilirPage>} />
 

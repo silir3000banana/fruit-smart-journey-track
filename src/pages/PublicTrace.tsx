@@ -113,7 +113,7 @@ export default function PublicTrace() {
         </section>
 
         <section className="rounded-2xl bg-card border p-5 shadow-sm" aria-labelledby="trust">
-          <h2 id="trust" className="font-semibold text-foreground mb-3 flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-primary-dark" />Traceability verification</h2>
+          <h2 id="trust" className="font-semibold text-foreground mb-3 flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-primary" />Traceability verification</h2>
           <ul className="space-y-2">
             {trust.map((t) => (
               <li key={t.label} className="flex items-center justify-between text-sm">
